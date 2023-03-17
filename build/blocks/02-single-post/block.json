@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json.schemastore.org/block.json",
+  "apiVersion": 2,
+  "name": "blocks/single-post",
+  "title": "Gutenberg Example: Single Post (ESNext)",
+  "textdomain": "gutenberg-examples",
+  "icon": "post",
+  "category": "layout",
+  "keywords": [
+    "post",
+    "single"
+  ],
+  "example": {
+    "attributes": {
+      "content": "Hello world",
+      "alignment": "right"
+    }
+  },
+  "editorScript": "file:./index.js",
+  "editorStyle": "file:./index.css",
+  "style": "file:./style-index.css"
+}
