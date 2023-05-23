@@ -50,8 +50,10 @@ const Edit = (props) => {
 
 	return (
 		<>
-			<p>Select list and map options in the block panel on the right.</p>
-			<Embed {...props} />
+			<div style={{ padding: '20px', transform: 'scale(0.8)'}}>
+				<p>Select the list and map options in the block panel on the right.</p>
+				<Embed {...props} />
+			</div>
 		</>
 	);
 };

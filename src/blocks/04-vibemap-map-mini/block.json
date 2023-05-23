@@ -9,7 +9,7 @@
 	"keywords": [ "map", "listings" ],
 	"example": {
 		"attributes": {
-			"content": "Enter the slug of a Vibmeap place",
+			"slug": "peoria-riverfront-museum",
 			"align": "center",
 			"class": "vibemap-embed vibemap-map-mini iframe",
 			"frameborder": "0",

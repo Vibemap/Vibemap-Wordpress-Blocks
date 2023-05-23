@@ -3,6 +3,8 @@
  */
 import { registerBlockType } from '@wordpress/blocks';
 import { useBlockProps } from '@wordpress/block-editor';
+import { TextControl } from '@wordpress/components';
+const { InspectorControls } = wp.blockEditor;
 
 /**
  * Internal dependencies
@@ -50,11 +52,22 @@ const MapEmbed = ({
 
 const Edit = (props) => {
 	//const blockProps = useBlockProps({ style: blockStyle })
-	const { attributes } = props;
+	const { attributes, setAttributes } = props;
+	console.log('DEBUG attributes', attributes);
 
+	const slugInput = <TextControl
+		label={'Place ID'}
+		value={attributes?.slug}
+		onChange={(val) => setAttributes({ message: val })}
+	/>
 	return (
 		<>
+			<InspectorControls key='inspector'>
+				{slugInput}
+			</InspectorControls>
 			<div style={{ padding: '20px', transform: 'scale(0.9)'}}>
+				
+				{slugInput}
 				<MapEmbed {...props} />
 			</div>
 		</>
@@ -83,6 +96,10 @@ const attributes = {
 	"class": {
 		"type": "string",
 		"default": example?.attributes?.class
+	},
+	"slug": {
+		"type": "string",
+		"default": example?.attributes?.slug
 	},
 	"content": {
 		"type": "string",

@@ -4,7 +4,7 @@
 	"name": "blocks/vibemap-embed",
 	"title": "Vibemap Embed Blocks",
 	"textdomain": "gutenberg-examples",
-	"icon": "map",
+	"icon": "location-alt",
 	"category": "layout",
 	"keywords": [ "map", "listings" ],
 	"example": {
