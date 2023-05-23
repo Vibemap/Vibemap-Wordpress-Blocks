@@ -1,6 +1,6 @@
 {
 	"name": "vibemap-blocks",
-	"version": "0.1.0",
+	"version": "0.1.1",
 	"description": "Draft blocks for Vibemap listings, events and maps scaffolded with Create Block tool.",
 	"author": "Vibemap, Inc.",
 	"license": "GPL-2.0-or-later",

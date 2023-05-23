@@ -8,18 +8,22 @@ import { useBlockProps } from '@wordpress/block-editor';
  * Internal dependencies
  */
 import json from './block.json';
-//import Edit from './edit';
-//import save from './save';
 
 import './editor.scss';
 import './style.css';
 
+// Edit and Save are included in the same file here
 
-const Embed = ({
-	height = 500,
-	src = `https://vibemap.com/map?embedded=1`,
+const MapEmbed = ({
+	height = 600,
+	slug = `peoria-riverfront-museum`,
+	domain = `https://vibemap.com`,
+	options = `embedded=1&placeLayout=map`,
+	path = `places/details`,
 	...props 
 }) => {
+
+	const src = `${domain}/${path}/${slug}?${options}`	
 
 	const iframe = `<iframe
       allowtransparency="true"
@@ -50,8 +54,9 @@ const Edit = (props) => {
 
 	return (
 		<>
-			<p>Select list and map options in the block panel on the right.</p>
-			<Embed {...props} />
+			<div style={{ padding: '20px', transform: 'scale(0.9)'}}>
+				<MapEmbed {...props} />
+			</div>
 		</>
 	);
 };
@@ -63,31 +68,32 @@ const Save = (props) => {
 
 	return (
 		<>
-			<Embed {...props} />
+			<MapEmbed {...props} />
 		</>
 	);
 }
 
 // Destructure the json file to get the name and settings for the block
 const { name, example } = json
+const attributes = {
+	"alignment": {
+		"type": "string",
+		"default": "none"
+	},
+	"class": {
+		"type": "string",
+		"default": example?.attributes?.class
+	},
+	"content": {
+		"type": "string",
+		"source": "html",
+		"selector": "p"
+	}
+}
 
 // Register the block
 registerBlockType(name, {
-	attributes: {
-		"alignment": {
-			"type": "string",
-			"default": "none"
-		},
-		"class": {
-			"type": "string",
-			"default": example?.attributes?.class
-		},
-		"content": {
-			"type": "string",
-			"source": "html",
-			"selector": "p"
-		}
-	},
+	attributes: attributes,
 	edit: Edit,
-	save: Save, // Object shorthand property - same as writing: save: save,
+	save: Save,
 });

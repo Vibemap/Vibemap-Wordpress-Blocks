@@ -23,9 +23,10 @@ class SelectPost extends Component {
             this.props.className += ' no-post';
         }
         return [
-            !!this.props.isSelected && (<InspectorControls key='inspector'>
-                <SelectControl onChange={this.onChangeSelectPost} value={this.props.attributes.selectedPost} label={__('Select a Post')} options={options} />
-            </InspectorControls>
+            !!this.props.isSelected && (
+                <InspectorControls key='inspector'>
+                    <SelectControl onChange={this.onChangeSelectPost} value={this.props.attributes.selectedPost} label={__('Select a Post')} options={options} />
+                </InspectorControls>
             ),
             <div className={this.props.className}>{output}</div>
         ]

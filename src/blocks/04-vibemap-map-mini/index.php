@@ -6,8 +6,7 @@
  * Version: 1.1.0
  * Author: the Gutenberg Team
  *
- * @package gutenberg-examples
- */
+ * @package vibemap
 
 defined( 'ABSPATH' ) || exit;
 
@@ -17,10 +16,11 @@ defined( 'ABSPATH' ) || exit;
  *
  * Passes translations to JavaScript.
  */
-function register_block_single_post() {
+function register_block_vibemap_map_mini() {
 
 	// Register the block by passing the location of block.json.
 	register_block_type( __DIR__ );
 
 }
-add_action( 'init', 'register_block_single_post' );
+
+add_action( 'init', 'register_block_vibemap_map_mini' );
