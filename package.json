@@ -5,6 +5,14 @@
 	"author": "Vibemap, Inc.",
 	"license": "GPL-2.0-or-later",
 	"main": "build/index.js",
+	"files": [
+		"build/**/*",
+		"src/**/*",
+		"*.php",
+		"*.css",
+		"*.md",
+		"*.txt"
+	],
 	"scripts": {
 		"build": "wp-scripts build",
 		"build-folders": "wp-scripts build --webpack-copy-php --webpack-src-dir=src/blocks --output-path=build/blocks",
