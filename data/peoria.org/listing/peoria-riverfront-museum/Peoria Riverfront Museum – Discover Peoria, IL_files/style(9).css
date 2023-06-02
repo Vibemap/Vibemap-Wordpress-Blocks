@@ -1,0 +1,152 @@
+/*
+Theme Name: Peoria - Child
+Theme URI: -
+Author: -
+Author URI: -
+Version: 1.0.0
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Template: ona
+Text Domain: peoria-child
+
+This theme, like WordPress, is licensed under the GPL.
+Use it to make something cool, have fun, and share what you've learned with others.
+Peoria is based on Underscores http://underscores.me/, (C) 2012-2015 Automattic, Inc.
+*/
+
+
+/**
+ Header
+ */
+.peoria-header-home {
+    position: absolute;
+    left: 0;
+    width: 100%;
+}
+
+
+/**
+ Navigation
+ */
+
+.peoria-header .wp-block-navigation__submenu-icon {
+    color: var(--wp--preset--color--orange);
+}
+
+.peoria-header .wp-block-navigation .wp-block-navigation-item > a:hover {
+    color: var(--wp--preset--color--orange);
+}
+
+.peoria-header .peoria-nav-no-angle .wp-block-navigation__submenu-icon {
+    display: none;
+}
+
+.peoria-header .wp-block-navigation__submenu-container {
+    border: none !important;
+    box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.4);
+}
+.peoria-header .wp-block-navigation__submenu-container .wp-block-navigation-item {
+    border: 1px solid #000;
+}
+.peoria-header .wp-block-navigation__submenu-container .wp-block-navigation-item__label {
+    font-family: var(--wp--preset--font-family--the-bartender);
+    font-size: 20px !important;
+}
+
+.peoria-header .peoria-menu-spacer {
+    height: 38px !important;
+    border-left: 2px solid #c6c6c3;
+}
+
+.peoria-header .peoria-header-search .wp-block-search__button {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    color: var(--wp--preset--color--orange) !important;
+}
+.peoria-header .peoria-header-search .wp-block-search__input {
+    display: none;
+}
+
+@media screen and (max-width: 1023px) {
+
+    .peoria-header .wp-block-navigation__responsive-container-open:not(.always-shown) {
+        display: flex;
+    }
+
+    .peoria-header .wp-block-navigation__responsive-container:not(.hidden-by-default):not(.is-menu-open) {
+        display: none;
+    }
+
+    .peoria-header .wp-block-navigation__responsive-container .wp-block-navigation__responsive-container-content .wp-block-navigation__submenu-container {
+        padding-top: 0;
+    }
+
+    .peoria-header .wp-block-navigation__responsive-container .wp-block-navigation__responsive-container-content .has-child .wp-block-navigation__submenu-container {
+        padding-left: 0;
+        padding-right: 0;
+    }
+    .peoria-header .wp-block-navigation__responsive-container .wp-block-navigation__submenu-container .wp-block-navigation-item {
+        padding-left: 1em;
+        padding-right: 1em;
+    }
+
+    .peoria-header .peoria-menu-spacer {
+        width: 100% !important;
+        height: 0 !important;
+        border-left: none;
+        border-top: 2px solid #c6c6c3;
+    }
+
+    .peoria-header .peoria-header-search .wp-block-search__inside-wrapper {
+        background: #e4e3dc;
+    }
+
+    .peoria-header .peoria-header-search .wp-block-search__input {
+        display: block;
+    }
+
+}
+
+
+/**
+ Footer
+ */
+
+.site-footer {}
+
+
+/**
+ Full width
+ */
+
+.peoria-full-width {
+    max-width: none !important;
+}
+
+.peoria-side-by-side {
+    position: relative;
+    padding: 80px !important;
+}
+@media (min-width: 40em) {
+    .peoria-side-by-side::before {
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 0;
+        background: #FCF3E8;
+        width: 86%;
+        height: 100%;
+        padding-top: 80px !important;
+        padding-bottom: 80px !important;
+        z-index: -1;
+        content: "";
+    }
+}
+.peoria-side-by-side a {
+    text-decoration: none;
+}
+.peoria-side-by-side .wp-element-button:hover,
+.peoria-side-by-side .wp-element-button:focus {
+    background: none;
+    border-color: transparent;
+}

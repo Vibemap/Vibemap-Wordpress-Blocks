@@ -1,0 +1,354 @@
+body .is-layout-constrained .core-featured-side-by-side.full-width .slides {
+    padding: 0 15px;
+}
+
+body .is-layout-constrained .core-featured-side-by-side.slides-across-2 .slides {
+    padding: 0 15px;
+    max-width: 1270px;
+}
+
+body .is-layout-constrained .core-featured-side-by-side:not(.slides-across-2) .slide > .inner {
+    position: relative;
+    padding: 0;
+    max-width: 100%;
+    margin: 0 auto;
+}
+
+body .is-layout-constrained .core-featured-side-by-side .slide .content-section {
+    display: flex;
+    background-color: #FCF3E8;
+    justify-content: center;
+    padding: 32px 20px;
+    padding-bottom: 30px;
+    color: #fff;
+}
+.slideshow-container  body .is-layout-constrained .core-featured-side-by-side .slide .content-section {
+    background: #f98d40;
+}
+
+
+
+body .is-layout-constrained .core-featured-side-by-side .content-section .inner {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+body .is-layout-constrained .core-featured-side-by-side .content-section .inner img {
+    width: 40px;
+}
+
+body .is-layout-constrained .core-featured-side-by-side .photo-credit {
+    color: #fff;
+    font-family: "DDC Hardware", sans-serif;
+    background-color: #f08820;
+    position: absolute;
+    bottom: 0;
+    left: 11px;
+    font-size: 12px;
+    padding: 2px 8px;
+    letter-spacing: .1em;
+    pointer-events: none;
+}
+
+body .is-layout-constrained .core-featured-side-by-side .inner > img {
+    margin-bottom: 20px;
+}
+
+body .is-layout-constrained .core-featured-side-by-side .img-cont {
+    position: relative;
+}
+
+body .is-layout-constrained .core-featured-side-by-side .title-cont h2,
+body .is-layout-constrained .core-featured-side-by-side .title-cont h2 a {
+    position: relative;
+    color: #333232;
+    font-family: "The Bartender", sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 38px;
+    line-height: 1em;
+    text-align: center;
+    margin-bottom: 18px;
+}
+
+body .is-layout-constrained .core-featured-side-by-side .slide h4,
+body .is-layout-constrained .core-featured-side-by-side .slide h4 a {
+    margin: 0;
+    font-family: "DDC Hardware", sans-serif;
+    font-size: 15px;
+    font-weight: 500;
+    color: #333232;
+    letter-spacing: 0.01em;
+    line-height: 1em;
+    text-align: center;
+    margin-bottom: 18px;
+}
+
+body .is-layout-constrained .core-featured-side-by-side .content-section p {
+    font-family: "Muli", sans-serif;
+    font-size: 17px;
+    line-height: 1.7em;
+    color: #333232;
+    margin: 0;
+    font-weight: 500;
+    letter-spacing: .01em;
+    text-align: center;
+}
+
+body .is-layout-constrained .core-featured-side-by-side .content-section .read-more {
+    margin-top: 15px;
+    display: block;
+    color: #f08821;
+    font-family: "DDC Hardware", sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 1.8em;
+    text-transform: uppercase;
+}
+
+.slideshow-container .is-layout-constrained .core-featured-side-by-side .slide .content-section .inner::before {
+    background: #f98d40;
+}
+
+.slideshow-container .is-layout-constrained .core-featured-side-by-side .content-section .read-more {
+    color: white;
+}
+
+@media (min-width: 40em) {
+    body .is-layout-constrained .core-featured-side-by-side {
+        margin-top: 30px;
+        margin-bottom: 30px;
+    }
+
+    body .is-layout-constrained .core-featured-side-by-side .slide {
+        margin-top: 100px;
+    }
+
+    body .is-layout-constrained .core-featured-side-by-side .slide > .inner {
+        display: flex;
+        position: relative;
+        flex-direction: row-reverse;
+        justify-content: center;
+        align-items: center;
+        padding-left: 25px;
+        margin-right: 40px;
+    }
+
+    body .is-layout-constrained .core-featured-side-by-side.reverse-slide-layout .slide > .inner {
+        flex-direction: row;
+    }
+
+    body .is-layout-constrained .core-featured-side-by-side.reverse-slide-layout .slide .content-section .inner::before {
+        left: unset;
+        right: 0;
+    }
+
+    body .is-layout-constrained .core-featured-side-by-side .slide .img-cont {
+        height: auto;
+        background-color: transparent;
+        padding: 0;
+        flex: 1 0 50%;
+        z-index: 2;
+    }
+
+    body .is-layout-constrained .core-featured-side-by-side .slide .content-section {
+        flex: 1 0 36%;
+        background-color: transparent;
+        padding: 0;
+    }
+
+    body .is-layout-constrained .core-featured-side-by-side.active .slide .img-cont {
+        opacity: 1;
+        transform: translateX(0);
+        transition: opacity ease-out .6s, transform ease-out .6s;
+    }
+
+    body .is-layout-constrained .core-featured-side-by-side .slide .img-cont {
+        transform: translateX(100px);
+        opacity: 0;
+        transition: opacity ease-out .6s, transform ease-out .6s;
+    }
+
+    body .is-layout-constrained .core-featured-side-by-side .slide .content-section .inner {
+        align-items: flex-start;
+        z-index: 1;
+        padding-left: 20px;
+    }
+
+    .slideshow-container .is-layout-constrained .core-featured-side-by-side .slide .content-section .inner,
+    body .is-layout-constrained .core-featured-side-by-side .slide .content-section .inner {
+        padding-right: 20px;
+    }
+
+    body .is-layout-constrained .core-featured-side-by-side .slide .content-section .inner img{
+        width: 60px;
+    }
+
+    body .is-layout-constrained .core-featured-side-by-side .title-cont h2,
+    body .is-layout-constrained .core-featured-side-by-side .title-cont h2 a,
+    body .is-layout-constrained .core-featured-side-by-side .slide h4,
+    body .is-layout-constrained .core-featured-side-by-side .slide h4 a,
+    body .is-layout-constrained .core-featured-side-by-side .slide .content-section .inner p {
+        text-align: left;
+    }
+
+    body .is-layout-constrained .core-featured-side-by-side .slide .content-section .inner::before {
+        content: "";
+        height: 130.5%;
+        width: 86%;
+        background: #FCF3E8;
+        position: absolute;
+        z-index: -1;
+        left: 0;
+        display: block;
+    }
+
+    /* collection when in slideshow-container, it behaves slightly different */
+    .slideshow-container .is-layout-constrained .core-featured-side-by-side .title-cont h2,
+    .slideshow-container .is-layout-constrained .core-featured-side-by-side .title-cont h2 a {
+        font-size: 50px;
+    }
+
+    .slideshow-container .is-layout-constrained .core-featured-side-by-side .slide .img-cont {
+        flex: 1 0 57.5%;
+    }
+
+    .slideshow-container .is-layout-constrained .core-featured-side-by-side .slide .content-section .inner::before {
+        height: 111.5%;
+        width: 78%;
+    }
+}
+
+@media screen and (min-width: 70em) {
+    body .is-layout-constrained .core-featured-side-by-side .slide .content-section .inner {
+        align-items: flex-start;
+        z-index: 1;
+        padding-left: 136px;
+    }
+
+    body .is-layout-constrained .core-featured-side-by-side .slide h4,
+    body .is-layout-constrained .core-featured-side-by-side .slide h4 a {
+        font-size: 23px
+    }
+
+    body .is-layout-constrained .core-featured-side-by-side .content-section p {
+        font-size: 18px;
+    }
+
+    body .is-layout-constrained .core-featured-side-by-side .content-section .read-more {
+        font-size: 19px;
+    }
+
+    body .is-layout-constrained .core-featured-side-by-side {
+        margin-top: 80px;
+        margin-bottom: 80px;
+    }
+
+    body .is-layout-constrained .core-featured-side-by-side:not(.slides-across-2) .slide > .inner {
+        margin-right: 82px;
+    }
+
+    body .is-layout-constrained .core-featured-side-by-side:not(.slides-across-2).reverse-slide-layout .slide > .inner {
+        margin-left: 82px;
+        margin-right: 0;
+    }
+
+    body .is-layout-constrained .core-featured-side-by-side .slide .img-cont {
+        flex: 1 0 35.5%;
+    }
+
+    body .is-layout-constrained .core-featured-side-by-side .slide .content-section .inner img {
+        width: 65px;
+    }
+
+    body .is-layout-constrained .core-featured-side-by-side .title-cont h2,
+    body .is-layout-constrained .core-featured-side-by-side .title-cont h2 a {
+        font-size: 71px;
+    }
+
+    body .is-layout-constrained .core-featured-side-by-side .slide .content-section .inner {
+        padding-right: 50px;
+    }
+
+    /* collection when in slideshow-container, it behaves slightly different */
+    .slideshow-container .is-layout-constrained .core-featured-side-by-side {
+        margin-top: 40px;
+        margin-bottom: 40px;
+    }
+
+    .slideshow-container .is-layout-constrained .core-featured-side-by-side:not(.slides-across-2) .slide > .inner {
+        margin-right: 63px;
+    }
+
+    .slideshow-container .is-layout-constrained .core-featured-side-by-side .slide .content-section .inner {
+        padding-right: 80px;
+    }
+
+    .slideshow-container .is-layout-constrained .core-featured-side-by-side .slide .content-section .inner img{
+        width: 50px;
+    }
+}
+
+/* This is for IE non-Grid specific styling */
+@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) and (min-width: 40em) {
+    .slideshow-container .is-layout-constrained .core-featured-side-by-side .slide .content-section .inner::before {
+        top: -5%;
+        bottom: 5%;
+        height: initial;
+        z-index: auto;
+    }
+    body .is-layout-constrained .core-featured-side-by-side .slide .content-section .inner::before {
+        top: -11%;
+        bottom: 11%;
+        height: initial;
+        z-index: auto;
+    }
+    body .is-layout-constrained .core-featured-side-by-side .slide .content-section .inner > * {
+        max-width: 99%;
+        width: 50%;
+    }
+
+    body .is-layout-constrained .core-featured-side-by-side .slide .content-section .inner h4 {
+        width: 50%;
+    }
+}
+
+/* collection helper generated css */
+body .is-layout-constrained .core-featured-side-by-side .img-cont {
+    padding-bottom: calc(100% * 490 / 648);
+    height: 0;
+    background-color: #333;
+}
+
+@media screen and (min-width: 0px) {
+    body .is-layout-constrained .core-featured-side-by-side .img-cont {
+        padding-bottom: calc(100% * 490 / 648);
+    }
+}
+
+@media screen and (min-width: 860px) {
+    body .is-layout-constrained .core-featured-side-by-side .img-cont {
+        padding-bottom: calc(100% * 666 / 839);
+    }
+}
+
+@media screen and (min-width: 1250px) {
+    body .is-layout-constrained .core-featured-side-by-side .img-cont {
+        padding-bottom: calc(100% * 999 / 1258);
+    }
+}
+
+
+/**
+ * Backend
+ */
+
+.wp-block-acf-acf-featured-side-by-side {
+    max-width: none !important;
+}
+.wp-block-acf-acf-featured-side-by-side a {
+    text-decoration: none !important;
+}
