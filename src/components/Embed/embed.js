@@ -1,0 +1,47 @@
+import React from 'react'
+
+const Embed = ({
+    height = 500,
+    domain = `https://vibemap.com`,
+    path = `map`,
+    // Emeded map options
+    city = `peoria`,
+    categories = [],
+    vibes = [],
+    ...props
+}) => {
+
+    const searchParams = new URLSearchParams({
+        embedded: 1,
+        placeLayout: 'both',
+        cities: city,
+        vibes: vibes,
+    });
+
+    const src = `${domain}/${path}/?${searchParams}`
+
+    const iframe = (
+        `<iframe
+        allowtransparency="true"
+        allowfullscreen="true"
+        frameborder="no"
+        height=${height}
+        onload="resizeIframe(this)"
+        style="width: 100%;"
+        scrolling="no"
+        title="Vibemap Widget"
+        src="${src}">
+    </iframe>`
+    )
+
+    return (
+        <div className="vibemap-embed"
+            style={{ 'height': height }}
+            dangerouslySetInnerHTML={{
+                __html: iframe ? iframe : ""
+            }}
+        />
+    )
+}
+
+export default Embed
