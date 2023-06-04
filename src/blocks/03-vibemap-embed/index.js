@@ -3,32 +3,25 @@
  */
 import { registerBlockType } from '@wordpress/blocks';
 import { useBlockProps } from '@wordpress/block-editor';
-import { FormTokenField } from '@wordpress/components';
+import { useState } from '@wordpress/element';
+
 const { InspectorControls } = wp.blockEditor;
-
-import allActivities from 'vibemap-constants/dist/activityCategories.json'
-import cities from 'vibemap-constants/dist/cities.json'
-import { getVibes, getCategoriesByLevel } from 'vibemap-constants/dist/vibes.js'
-
-const categories1 = getCategoriesByLevel(1)
-const categories2 = getCategoriesByLevel(2)
-const categories = categories1.concat(categories2)
-const category_slugs = allActivities.activityCategories.map(cat => cat.slug)
-const vibes_slugs = getVibes()
-console.log('DEBUG cities, categories', cities, categories, category_slugs);
 
 /**
  * Internal dependencies
  */
-import { useState } from '@wordpress/element';
 import json from './block.json';
 //import Edit from './edit';
 //import save from './save';
 
+// UI Components and Hook for Filters
+import Filters from '../../components/Filters/filters.js'
+import useFilterState from '../../components/Filters/useFilterState.js';
+
 import './editor.scss';
 import './style.css';
 
-
+// TODO: Make this a component
 const Embed = ({
 	height = 500,
 	domain = `https://vibemap.com`,
@@ -49,17 +42,19 @@ const Embed = ({
 
 	const src = `${domain}/${path}/?${searchParams}`
 
-	const iframe = `<iframe
-      allowtransparency="true"
-      allowfullscreen="true"
-      frameborder="no"
-      height=${height}
-      onload="resizeIframe(this)"
-      style="width: 100%;"
-      scrolling="no"
-      title="Vibemap Widget"
-      src="${src}">
-    </iframe>`
+	const iframe = (
+		`<iframe
+     		allowtransparency="true"
+      		allowfullscreen="true"
+      		frameborder="no"
+      		height=${height}
+      		onload="resizeIframe(this)"
+      		style="width: 100%;"
+      		scrolling="no"
+      		title="Vibemap Widget"
+      		src="${src}">
+    	</iframe>`
+	)
 
 	return (
 		<div className="vibemap-embed"
@@ -71,47 +66,33 @@ const Embed = ({
 	)
 }
 
-
 const Edit = (props) => {
 	//const blockProps = useBlockProps({ style: blockStyle })
 	const { attributes } = props;
-	
-	const [selectedCategories, setSelectedCategories] = useState([]);
-	const [selectedVibes, setSelectedVibes] = useState([]);
-	console.log('DEBUG selectedVibes', selectedVibes);
 
-	const activityPicker = (
-		<FormTokenField
-			__experimentalAutoSelectFirstMatch
-			__experimentalExpandOnFocus
-			label="Type a category"
-			onChange={(tokens) => setSelectedCategories(tokens)}
-			suggestions={category_slugs}
-			value={selectedCategories}
-		/>
-	)
-
-	const vibePicker = (
-		<FormTokenField
-			__experimentalAutoSelectFirstMatch
-			__experimentalExpandOnFocus
-			label="Type a vibe"
-			onChange={(tokens) => setSelectedVibes(tokens)}
-			suggestions={vibes_slugs}
-			value={selectedVibes}
-		/>
-	)
+	const filterState = useFilterState();
+	const {
+		categories,
+		category_slugs,
+		city_slugs,
+		vibes_slugs,
+		selectedCities,
+		selectedCategories,
+		selectedVibes,
+		setSelectedCities,
+		setSelectedCategories,
+		setSelectedVibes
+	} = filterState;
+	console.log('DEBUG: filterState in embed ', filterState, selectedCities);
 
 	return (
 		<>
 			<InspectorControls key='inspector'>
-				{activityPicker}
-				{vibePicker}
+				<Filters {...filterState} />				
 			</InspectorControls>
 
 			<div style={{ padding: '20px', transform: 'scale(0.8)'}}>
-				{activityPicker}
-				{vibePicker}
+				<Filters {...filterState} />
 				<p>Select the list and map options in the block panel on the right.</p>
 				<Embed
 					vibes={selectedVibes}
