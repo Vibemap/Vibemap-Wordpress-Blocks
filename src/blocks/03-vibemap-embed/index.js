@@ -1,89 +1,58 @@
-/**
- * WordPress dependencies
- */
+// WordPress dependencies
 import { registerBlockType } from '@wordpress/blocks';
 import { useBlockProps } from '@wordpress/block-editor';
-import { useState } from '@wordpress/element';
+import { useEffect } from '@wordpress/element';
 
 const { InspectorControls } = wp.blockEditor;
 
-/**
- * Internal dependencies
- */
+// Internal dependencies
 import json from './block.json';
-//import Edit from './edit';
-//import save from './save';
 
-// UI Components and Hook for Filters
-import Filters from '../../components/Filters/filters.js'
+// Components
+import Embed from '../../components/Embed';
+import Filters from '../../components/Filters'
+// Hook for Filters state
 import useFilterState from '../../components/Filters/useFilterState.js';
 
 import './editor.scss';
 import './style.css';
 
-// TODO: Make this a component
-const Embed = ({
-	height = 500,
-	domain = `https://vibemap.com`,
-	path = `map`,
-	// Emeded map options
-	city = `peoria`,
-	categories = [],
-	vibes = [],
-	...props
-}) => {
-	
-	const searchParams = new URLSearchParams({
-		embedded: 1,
-		placeLayout: 'both',
-		cities: city,
-		vibes: vibes,
-	});
-
-	const src = `${domain}/${path}/?${searchParams}`
-
-	const iframe = (
-		`<iframe
-     		allowtransparency="true"
-      		allowfullscreen="true"
-      		frameborder="no"
-      		height=${height}
-      		onload="resizeIframe(this)"
-      		style="width: 100%;"
-      		scrolling="no"
-      		title="Vibemap Widget"
-      		src="${src}">
-    	</iframe>`
-	)
-
-	return (
-		<div className="vibemap-embed"
-			style={{ 'height': height }}
-			dangerouslySetInnerHTML={{
-				__html: iframe ? iframe : ""
-			}}
-		/>
-	)
-}
-
+// Editable UI and block attributes
 const Edit = (props) => {
-	//const blockProps = useBlockProps({ style: blockStyle })
+	const blockProps = useBlockProps()
 	const { attributes } = props;
 
-	const filterState = useFilterState();
+	const { cities, categories, vibes } = attributes;
+
+	// Filters state, set by block attributes
+	const filterState = useFilterState({ cities, categories, vibes});
 	const {
-		categories,
-		category_slugs,
-		city_slugs,
-		vibes_slugs,
 		selectedCities,
 		selectedCategories,
-		selectedVibes,
-		setSelectedCities,
-		setSelectedCategories,
-		setSelectedVibes
+		selectedVibes,		
 	} = filterState;
 	console.log('DEBUG: filterState in embed ', filterState, selectedCities);
+
+	// Sync block attributes with filter state
+	const cityDep = JSON.stringify(selectedCities);
+	useEffect(() => {
+		props.setAttributes({ cities: selectedCities });
+	}, [cityDep]);
+
+	const catDep = JSON.stringify(selectedCategories);
+	useEffect(() => {
+		props.setAttributes({ categories: selectedCategories });
+	}, [catDep]);
+
+	const vibeDep = JSON.stringify(selectedVibes);
+	useEffect(() => {
+		props.setAttributes({ vibes: selectedVibes });
+	}, [vibeDep]);
+
+	const blockStyle = { 
+		padding: '20px', 
+		transform: 'scale(0.8)' 
+	}
 
 	return (
 		<>
@@ -91,28 +60,35 @@ const Edit = (props) => {
 				<Filters {...filterState} />				
 			</InspectorControls>
 
-			<div style={{ padding: '20px', transform: 'scale(0.8)'}}>
+			<div {...blockProps} style={blockStyle}>
 				<Filters {...filterState} />
 				<p>Select the list and map options in the block panel on the right.</p>
-				<Embed
-					vibes={selectedVibes}
-					{...props} 
+				<Embed {...props}
+					cities={selectedCities}
+					categories={selectedCategories}
+					vibes={selectedVibes}					 
 					/>
 			</div>
 		</>
 	);
 };
 
-
+// Preview in Gutenberg editor
 const Save = (props) => {
 	//const blockProps = useBlockProps.save({ style: blockStyle });
 	const { attributes } = props;
+	const {
+		cities,
+		categories, 
+		vibes 
+	} = attributes;
+	console.log('DEBUG: got attributes ', attributes, ' in save');
 
-	return (
-		<>
-			<Embed {...props} />
-		</>
-	);
+	return <Embed {...props} 
+		cities={cities}
+		categories={categories}
+		vibes={vibes} 
+		/>	
 }
 
 // Destructure the json file to get the name and settings for the block
@@ -128,6 +104,18 @@ registerBlockType(name, {
 		"class": {
 			"type": "string",
 			"default": example?.attributes?.class
+		},
+		"categories": {
+			"type": "array",
+			"default": example?.attributes?.categories
+		},
+		"cities": {
+			"type": "array",
+			"default": example?.attributes?.cities
+		},
+		"vibes": {
+			"type": "array",
+			"default": example?.attributes?.vibes
 		},
 		"content": {
 			"type": "string",

@@ -51,21 +51,22 @@ const MapEmbed = ({
 
 
 const Edit = (props) => {
-	//const blockProps = useBlockProps({ style: blockStyle })
+	const blockProps = useBlockProps()
 	const { attributes, setAttributes } = props;
-	console.log('DEBUG attributes', attributes);
+	console.log('DEBUG attributes and props ', attributes, blockProps);
 
 	const slugInput = <TextControl
 		label={'Place ID'}
 		value={attributes?.slug}
 		onChange={(val) => setAttributes({ message: val })}
 	/>
+	
 	return (
 		<>
 			<InspectorControls key='inspector'>
 				{slugInput}
 			</InspectorControls>
-			<div style={{ padding: '20px', transform: 'scale(0.9)'}}>
+			<div {...blockProps} style={{ padding: '20px', transform: 'scale(0.9)'}}>
 				
 				{slugInput}
 				<MapEmbed {...props} />
