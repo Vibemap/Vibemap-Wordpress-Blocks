@@ -1,0 +1,1 @@
+(() => { "use strict"; const e = window.wp.element; window.wp.i18n; class n extends e.Component { render() { return (0, e.createElement)("h1", null, " General Settings ") } } document.addEventListener("DOMContentLoaded", (function (t) { (0, e.render)((0, e.createElement)(n, null), document.getElementById("plugin-name-settings-page")) })) })();
