@@ -31,5 +31,6 @@ require plugin_dir_path( __FILE__ ) . 'build/blocks/01-basic-esnext/index.php';
 require plugin_dir_path( __FILE__ ) . 'build/blocks/02-single-post/index.php';
 require plugin_dir_path( __FILE__ ) . 'build/blocks/03-vibemap-embed/index.php';
 require plugin_dir_path( __FILE__ ) . 'build/blocks/04-vibemap-map-mini/index.php';
+require plugin_dir_path( __FILE__ ) . 'build/blocks/05-vibemap-embed-events/index.php';
 
 add_action( 'init', 'create_block_test_block_block_init' );
