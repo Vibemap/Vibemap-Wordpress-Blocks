@@ -1,0 +1,233 @@
+.core-cards-three-across {
+    margin-top: 40px;
+    margin-bottom: 50px;
+    position: relative;
+}
+.core-cards-three-across .slides {
+    padding: 0 20px;
+    max-width: 1190px;
+    margin: 0 auto;
+}
+
+.core-cards-three-across::before {
+    content: '';
+    width: 195px;
+    height: 375px;
+    position: absolute;
+    top: -22px;
+    left: -13px;
+    overflow: hidden;
+}
+
+.core-cards-three-across.bg-img::before {
+    background-image: url(images/State.svg);
+    background-repeat: no-repeat;
+    background-position: left;
+}
+
+.core-cards-three-across .view-all-cont.orange-button.top {
+    display: none;
+}
+
+.core-cards-three-across .content-section {
+    position: relative;
+}
+
+.core-cards-three-across .title-cont h2 {
+    color: #6f6d6a;
+    font-family: 'The Bartender Script', script;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 75px;
+    line-height: 1.3em;
+    margin-bottom: 8px;
+    text-align: center;
+    position: relative;
+}
+
+.core-cards-three-across .view-all-cont.orange-button {
+    text-align: center;
+}
+
+.core-cards-three-across .view-all-cont.orange-button .view-all {
+    font-family: 'DDC Hardware', sans-serif;
+    font-size: 21px;
+    color: #fff;
+    padding: 10px 20px;
+    background-color: #f08820;
+    /* letter-spacing: .05em; */
+}
+
+.core-cards-three-across .slides {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.core-cards-three-across .slides > * {
+    margin-bottom: 40px;
+    padding: 0 20px;
+    width: 100%;
+}
+
+.core-cards-three-across .slide .img-cont {
+    position: relative;
+    margin-bottom: 20px;
+    overflow: hidden;
+}
+
+.core-cards-three-across .slide .img-cont img {
+    display: block;
+    width: 100%;
+}
+
+.core-cards-three-across .slide h4,
+.core-cards-three-across .slide h4 a {
+    margin-top: 23px;
+    font-family: 'The Bartender', sans-serif;
+    font-size: 38px;
+    font-weight: 400;
+    line-height: 1em;
+    color: #333232;
+    margin-bottom: 5px;
+    letter-spacing: 0.01em;
+}
+
+.core-cards-three-across .slide p {
+    font-family: "Muli", sans-serif;
+    font-size: 17px;
+    line-height: 1.7em;
+    color: #333232;
+    margin-bottom: 22px;
+    font-weight: 500;
+    margin-top: 10px;
+    letter-spacing: .01em;
+}
+
+.core-cards-three-across .slide .read-more {
+    margin-top: 7px;
+    display: block;
+    color: #f08820;
+    font-family: 'DDC Hardware', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 1.8em;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+}
+
+@media (min-width: 640px) {
+    .core-cards-three-across .view-all-cont.orange-button.top {
+        display: inline-block;
+        margin-left: auto;
+    }
+    .core-cards-three-across .slides > * {
+        width: 50%;
+    }
+    .core-cards-three-across .title-cont {
+        text-align: left;
+        margin: 0 auto;
+        padding: 0 20px;
+        max-width: 1190px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        min-height: 200px;
+    }
+    .core-cards-three-across .title-cont h2 {
+        font-size: 80px;
+        margin-bottom: 0;
+        align-self: flex-start;
+        margin-left: 55px;
+    }
+}
+
+@media (min-width: 1024px) {
+    .core-cards-three-across .view-all-cont.orange-button {
+        display: none;
+    }
+    .core-cards-three-across .title-cont {
+        text-align: left;
+        margin: 0 auto;
+        padding: 0 20px;
+    }
+    .core-cards-three-across .title-cont h2 {
+        font-size: 150px;
+        margin-bottom: 0;
+    }
+    .core-cards-three-across {
+        margin-top:55px;
+        margin-bottom: 74px;
+    }
+    .core-cards-three-across::before {
+        content: '';
+        width: 365px;
+        height: 670px;
+        position: absolute;
+        top: -19px;
+        left: -29px;
+    }
+    .core-cards-three-across.bg-img::before {
+        background-image: url(images/State.svg);
+        background-repeat: no-repeat;
+        background-position: right;
+    }
+    .core-cards-three-across.slides-across-3 .slides > * {
+        width: 33.33333%
+    }
+
+    .core-cards-three-across.slides-across-4 .slides > * {
+        width: 25%;
+    }
+}
+
+
+@supports (display: grid) {
+    .core-cards-three-across .slides {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .core-cards-three-across .slides > * {
+        margin-bottom: 0;
+        padding: 0;
+        width: 100% !important;
+    }
+
+    .core-cards-three-across .slides .slide:first-child {
+        display: inline-block;
+    }
+
+    @media (min-width: 640px) {
+        .core-cards-three-across .slides {
+            grid-template-columns: repeat(2, 1fr);
+        }
+        .core-cards-three-across .slides > * {
+            display: inline-block;
+        }
+    }
+
+    @media (min-width: 1024px) {
+        .core-cards-three-across .slide .read-more {
+            margin-top: 7px;
+            display: block;
+            color: #f08820;
+            font-family: 'DDC Hardware', sans-serif;
+            font-style: normal;
+            font-weight: 400;
+            font-size: 18px;
+            line-height: 1.8em;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+        }
+        .core-cards-three-across.slides-across-3 .slides {
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+        }
+
+        .core-cards-three-across.slides-across-4 .slides {
+            grid-template-columns: repeat(4, 1fr);
+        }
+    }
+}

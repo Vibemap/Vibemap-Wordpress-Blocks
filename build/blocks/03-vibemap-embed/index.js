@@ -9,15 +9,22 @@
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
-/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _wordpress_blocks__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/blocks */ "@wordpress/blocks");
-/* harmony import */ var _wordpress_blocks__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/block-editor */ "@wordpress/block-editor");
-/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _block_json__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./block.json */ "./src/blocks/03-vibemap-embed/block.json");
-/* harmony import */ var _editor_scss__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./editor.scss */ "./src/blocks/03-vibemap-embed/editor.scss");
-/* harmony import */ var _style_css__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./style.css */ "./src/blocks/03-vibemap-embed/style.css");
+/* harmony import */ var _babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/extends */ "./node_modules/@babel/runtime/helpers/esm/extends.js");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _wordpress_blocks__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/blocks */ "@wordpress/blocks");
+/* harmony import */ var _wordpress_blocks__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @wordpress/block-editor */ "@wordpress/block-editor");
+/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__);
+Object(function webpackMissingModule() { var e = new Error("Cannot find module 'vibemap-constants/dist/activityCategories.json'"); e.code = 'MODULE_NOT_FOUND'; throw e; }());
+Object(function webpackMissingModule() { var e = new Error("Cannot find module 'vibemap-constants/dist/cities.json'"); e.code = 'MODULE_NOT_FOUND'; throw e; }());
+Object(function webpackMissingModule() { var e = new Error("Cannot find module 'vibemap-constants/dist/vibes.js'"); e.code = 'MODULE_NOT_FOUND'; throw e; }());
+/* harmony import */ var _block_json__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./block.json */ "./src/blocks/03-vibemap-embed/block.json");
+/* harmony import */ var _editor_scss__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./editor.scss */ "./src/blocks/03-vibemap-embed/editor.scss");
+/* harmony import */ var _style_css__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./style.css */ "./src/blocks/03-vibemap-embed/style.css");
+
 
 /**
  * WordPress dependencies
@@ -25,9 +32,23 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+const {
+  InspectorControls
+} = wp.blockEditor;
+
+
+
+const categories1 = Object(function webpackMissingModule() { var e = new Error("Cannot find module 'vibemap-constants/dist/vibes.js'"); e.code = 'MODULE_NOT_FOUND'; throw e; }())(1);
+const categories2 = Object(function webpackMissingModule() { var e = new Error("Cannot find module 'vibemap-constants/dist/vibes.js'"); e.code = 'MODULE_NOT_FOUND'; throw e; }())(2);
+const categories = categories1.concat(categories2);
+const category_slugs = Object(function webpackMissingModule() { var e = new Error("Cannot find module 'vibemap-constants/dist/activityCategories.json'"); e.code = 'MODULE_NOT_FOUND'; throw e; }())(cat => cat.slug);
+const vibes_slugs = Object(function webpackMissingModule() { var e = new Error("Cannot find module 'vibemap-constants/dist/vibes.js'"); e.code = 'MODULE_NOT_FOUND'; throw e; }())();
+console.log('DEBUG cities, categories', Object(function webpackMissingModule() { var e = new Error("Cannot find module 'vibemap-constants/dist/cities.json'"); e.code = 'MODULE_NOT_FOUND'; throw e; }()), categories, category_slugs);
+
 /**
  * Internal dependencies
  */
+
 
 //import Edit from './edit';
 //import save from './save';
@@ -37,9 +58,21 @@ __webpack_require__.r(__webpack_exports__);
 const Embed = _ref => {
   let {
     height = 500,
-    src = `https://vibemap.com/map?embedded=1`,
+    domain = `https://vibemap.com`,
+    path = `map`,
+    // Emeded map options
+    city = `peoria`,
+    categories = [],
+    vibes = [],
     ...props
   } = _ref;
+  const searchParams = new URLSearchParams({
+    embedded: 1,
+    placeLayout: 'both',
+    cities: city,
+    vibes: vibes
+  });
+  const src = `${domain}/${path}/?${searchParams}`;
   const iframe = `<iframe
       allowtransparency="true"
       allowfullscreen="true"
@@ -51,7 +84,7 @@ const Embed = _ref => {
       title="Vibemap Widget"
       src="${src}">
     </iframe>`;
-  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
     className: "vibemap-embed",
     style: {
       'height': height
@@ -66,24 +99,52 @@ const Edit = props => {
   const {
     attributes
   } = props;
-  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", null, "Select list and map options in the block panel on the right."), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(Embed, props));
+  const [selectedCategories, setSelectedCategories] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.useState)([]);
+  const [selectedVibes, setSelectedVibes] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.useState)([]);
+  console.log('DEBUG selectedVibes', selectedVibes);
+  const activityPicker = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.FormTokenField, {
+    __experimentalAutoSelectFirstMatch: true,
+    __experimentalExpandOnFocus: true,
+    label: "Type a category",
+    onChange: tokens => setSelectedCategories(tokens),
+    suggestions: category_slugs,
+    value: selectedCategories
+  });
+  const vibePicker = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.FormTokenField, {
+    __experimentalAutoSelectFirstMatch: true,
+    __experimentalExpandOnFocus: true,
+    label: "Type a vibe",
+    onChange: tokens => setSelectedVibes(tokens),
+    suggestions: vibes_slugs,
+    value: selectedVibes
+  });
+  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(InspectorControls, {
+    key: "inspector"
+  }, activityPicker, vibePicker), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
+    style: {
+      padding: '20px',
+      transform: 'scale(0.8)'
+    }
+  }, activityPicker, vibePicker, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("p", null, "Select the list and map options in the block panel on the right."), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(Embed, (0,_babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    vibes: selectedVibes
+  }, props))));
 };
 const Save = props => {
   //const blockProps = useBlockProps.save({ style: blockStyle });
   const {
     attributes
   } = props;
-  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(Embed, props));
+  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(Embed, props));
 };
 
 // Destructure the json file to get the name and settings for the block
 const {
   name,
   example
-} = _block_json__WEBPACK_IMPORTED_MODULE_3__;
+} = _block_json__WEBPACK_IMPORTED_MODULE_6__;
 
 // Register the block
-(0,_wordpress_blocks__WEBPACK_IMPORTED_MODULE_1__.registerBlockType)(name, {
+(0,_wordpress_blocks__WEBPACK_IMPORTED_MODULE_2__.registerBlockType)(name, {
   attributes: {
     "alignment": {
       "type": "string",
@@ -149,6 +210,16 @@ module.exports = window["wp"]["blocks"];
 
 /***/ }),
 
+/***/ "@wordpress/components":
+/*!************************************!*\
+  !*** external ["wp","components"] ***!
+  \************************************/
+/***/ ((module) => {
+
+module.exports = window["wp"]["components"];
+
+/***/ }),
+
 /***/ "@wordpress/element":
 /*!*********************************!*\
   !*** external ["wp","element"] ***!
@@ -159,13 +230,40 @@ module.exports = window["wp"]["element"];
 
 /***/ }),
 
+/***/ "./node_modules/@babel/runtime/helpers/esm/extends.js":
+/*!************************************************************!*\
+  !*** ./node_modules/@babel/runtime/helpers/esm/extends.js ***!
+  \************************************************************/
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ _extends)
+/* harmony export */ });
+function _extends() {
+  _extends = Object.assign ? Object.assign.bind() : function (target) {
+    for (var i = 1; i < arguments.length; i++) {
+      var source = arguments[i];
+      for (var key in source) {
+        if (Object.prototype.hasOwnProperty.call(source, key)) {
+          target[key] = source[key];
+        }
+      }
+    }
+    return target;
+  };
+  return _extends.apply(this, arguments);
+}
+
+/***/ }),
+
 /***/ "./src/blocks/03-vibemap-embed/block.json":
 /*!************************************************!*\
   !*** ./src/blocks/03-vibemap-embed/block.json ***!
   \************************************************/
 /***/ ((module) => {
 
-module.exports = JSON.parse('{"$schema":"https://json.schemastore.org/block.json","apiVersion":2,"name":"blocks/vibemap-embed","title":"Vibemap Embed Blocks","textdomain":"gutenberg-examples","icon":"map","category":"layout","keywords":["map","listings"],"example":{"attributes":{"content":"Hello world","align":"center","class":"vibemap-embed iframe","frameborder":"0","height":500,"width":"100%","scrolling":"yes"}},"editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css"}');
+module.exports = JSON.parse('{"$schema":"https://json.schemastore.org/block.json","apiVersion":2,"name":"blocks/vibemap-embed","title":"Vibemap Embed Blocks","textdomain":"gutenberg-examples","icon":"location-alt","category":"layout","keywords":["map","listings"],"example":{"attributes":{"content":"Hello world","align":"center","class":"vibemap-embed iframe","frameborder":"0","height":500,"width":"100%","scrolling":"yes"}},"editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css"}');
 
 /***/ })
 

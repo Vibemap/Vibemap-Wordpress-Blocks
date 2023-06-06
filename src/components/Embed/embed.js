@@ -3,7 +3,7 @@ import React from 'react'
 const Embed = ({
     height = 500,
     domain = `https://vibemap.com`,
-    path = `events`,
+    path = `map`,
     // Emeded map options
     city = `peoria`,
     categories = [],

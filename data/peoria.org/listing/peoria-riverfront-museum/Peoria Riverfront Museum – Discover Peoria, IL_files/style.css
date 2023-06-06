@@ -1,0 +1,218 @@
+body .is-layout-constrained .core-callout-tiles-four-across {
+    position: relative;
+    margin: 0 auto;
+    padding: 0;
+    padding-left: 19px;
+    padding-right: 18px;
+    max-width: 1202px;
+}
+
+body .is-layout-constrained .core-callout-tiles-four-across:not(.full-width) .slides {
+    padding-left: 13px;
+}
+body .is-layout-constrained .core-callout-tiles-four-across .title-cont {
+    position: relative;
+}
+body .is-layout-constrained .core-callout-tiles-four-across .title-cont::after {
+    content: '';
+    position: absolute;
+    left: -129px;
+    top: -191px;
+    width: 132%;
+    height: 128%;
+    overflow: hidden;
+}
+
+body .is-layout-constrained .core-callout-tiles-four-across.bg-img .title-cont::after {
+    background-image: url(images/WAVE-SHAPE-LEFT.svg);
+    background-repeat: no-repeat;
+    background-position: left;
+}
+
+body .is-layout-constrained .core-callout-tiles-four-across .slides {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+body .is-layout-constrained .core-callout-tiles-four-across .slide .inner::before {
+    content: '';
+    width: 100%;
+    height: 0;
+    padding-bottom: calc(100% * 111 / 270);
+    border: 1px solid #d6d6ce;
+    position: absolute;
+    top: -12px;
+    left: -11px;
+}
+
+body .is-layout-constrained .core-callout-tiles-four-across .slides > * {
+    flex: 1 calc(100% - 40px);
+    margin: 20px;
+}
+
+@supports (display: grid) {
+    body .is-layout-constrained .core-callout-tiles-four-across .slides {
+        display: grid;
+        gap: 34px;
+        margin-bottom: 42px;
+    }
+
+    body .is-layout-constrained .core-callout-tiles-four-across.full-width .slides {
+        gap: 8px;
+    }
+
+    @media (min-width: 640px) {
+        body .is-layout-constrained .core-callout-tiles-four-across.slides-across-2 .slides {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        body .is-layout-constrained .core-callout-tiles-four-across.slides-across-3 .slides {
+            grid-template-columns: repeat(3, 1fr);
+        }
+
+        body .is-layout-constrained .core-callout-tiles-four-across.slides-across-4 .slides {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+
+    @media (min-width: 1024px) {
+        body .is-layout-constrained .core-callout-tiles-four-across.slides-across-4 .slides {
+            grid-template-columns: repeat(4, 1fr);
+        }
+    }
+
+    body .is-layout-constrained .core-callout-tiles-four-across .slide { margin: 0; }
+}
+
+body .is-layout-constrained .core-callout-tiles-four-across .slide {
+    position: relative;
+}
+
+body .is-layout-constrained .core-callout-tiles-four-across .slide .content-section {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    padding-top: 25px;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+body .is-layout-constrained .core-callout-tiles-four-across .slide .img-cont {
+    position: relative;
+    overflow: hidden;
+}
+
+body .is-layout-constrained .core-callout-tiles-four-across .slide .img-cont::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.9), transparent);
+    pointer-events: none;
+}
+
+body .is-layout-constrained .core-callout-tiles-four-across .slide img {
+    display: block;
+    width: 100%;
+}
+
+body .is-layout-constrained .core-callout-tiles-four-across .slide h4,
+body .is-layout-constrained .core-callout-tiles-four-across .slide h4 a {
+    font-size: 25px;
+    font-weight: 400;
+    color: #F8F0E3;
+    text-align: center;
+    font-family: 'The Bartender', sans-serif;
+    line-height: 1.25em;
+    letter-spacing: .05em;
+}
+body .is-layout-constrained .core-callout-tiles-four-across .title-cont {
+    margin-bottom: 35px;
+    margin-top: 27px; /** Added to give space for the design */
+
+}
+body .is-layout-constrained .core-callout-tiles-four-across .title-cont h2 {
+    font-size: 37px;
+    font-weight: 400;
+    color: #333232;
+    font-family: 'The Bartender', sans-serif;
+    line-height: 1.25em;
+    letter-spacing: .01em;
+    margin-bottom: 11.5px;
+}
+
+body .is-layout-constrained .core-callout-tiles-four-across .title-cont p {
+    font-family: "Muli", sans-serif;
+    font-weight: 600;
+    font-size: 17px;
+    line-height: 1.65em;
+}
+
+
+@media (min-width: 640px) {
+    body .is-layout-constrained .core-callout-tiles-four-across .title-cont {
+        width: 65%;  /** Contrained the field to match the PSD */
+        margin-bottom: 58px;
+        margin-top: 27px; /** Added to give space for the design */
+    }
+    body .is-layout-constrained .core-callout-tiles-four-across:not(.slides-across-1) .slides > * {
+        flex: 1 calc(50% - 40px);
+    }
+    body .is-layout-constrained .core-callout-tiles-four-across .slide .inner::before {
+        padding-bottom: calc(100% * 350 / 526);
+        border-width: 2px;
+        top: -12px;
+        left: -11px;
+    }
+}
+@media (min-width: 1024px) {
+    body .is-layout-constrained .core-callout-tiles-four-across .title-cont::after {
+        content: '';
+        position: absolute;
+        left: -129px;
+        top: 0;
+        width: 100%;
+        height: 160%;
+        overflow: hidden;
+    }
+
+    body .is-layout-constrained .core-callout-tiles-four-across.bg-img .title-cont::after {
+        background-image: url(images/WAVE-SHAPE-LEFT.svg);
+        background-repeat: no-repeat;
+        background-position: left;
+    }
+    body .is-layout-constrained .core-callout-tiles-four-across .slide .content-section {
+        padding-top: 38px;
+    }
+    body .is-layout-constrained .core-callout-tiles-four-across .title-cont h2 {
+        font-size: 65px;
+        margin-bottom: 3.5px;
+    }
+
+    body .is-layout-constrained .core-callout-tiles-four-across .title-cont p {
+        font-family: "Muli", sans-serif;
+        font-weight: 400;
+        font-size: 19px;
+        line-height: 1.65em;
+    }
+    body .is-layout-constrained .core-callout-tiles-four-across:not(.slides-across-1) .slides > * {
+        flex: 1 calc(33.33333% - 40px);
+    }
+
+    body .is-layout-constrained .core-callout-tiles-four-across:not(.slides-across-1) .slides > * {
+        flex: 1 calc(25% - 40px);
+    }
+    body .is-layout-constrained .core-callout-tiles-four-across {
+        padding-left: 15px;
+        padding-right: 15px;
+        margin-bottom: 68px;
+    }
+
+}

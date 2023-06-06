@@ -1,0 +1,254 @@
+/* Core styles can be used any where you need a generic HTML block */
+@font-face {
+    font-family: "ddc_regular"; /* DDC Hardware */
+    src: url("/includes/public/assets/fonts/ddchardware-regular-webfont.woff2") format("woff2"),
+    url("/includes/public/assets/fonts/ddchardware-regular-webfont.woff") format("woff");
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: "bartender_cond_sans"; /* The Bartender */
+    src: url("/includes/public/assets/fonts/thebartender-condsans-webfont.woff2") format("woff2"),
+    url("/includes/public/assets/fonts/thebartender-condsans-webfont.woff") format("woff");
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: "bartender_cond_serif"; /* The Bartender Cond Serif */
+    src: url("/includes/public/assets/fonts/thebartender-condserif-webfont.woff2") format("woff2"),
+    url("/includes/public/assets/fonts/thebartender-condserif-webfont.woff") format("woff");
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: "bartender_script"; /* The Bartender Script */
+    src: url("/includes/public/assets/fonts/thebartender-script-webfont.woff2") format("woff2"),
+    url("/includes/public/assets/fonts/thebartender-script-webfont.woff") format("woff");
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: "bartender_serif_b"; /* The Bartender Serif */
+    src: url("/includes/public/assets/fonts/thebartender-serifb-webfont.woff2") format("woff2"),
+    url("/includes/public/assets/fonts/thebartender-serifb-webfont.woff") format("woff");
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+body,
+h1, h2, h3, h4, h5, h6, p, button, input, select {
+    font-family: "Muli", sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6, p {
+    margin: 0;
+}
+
+button {
+    background-color: #f08820;
+    border: 1px solid #fff
+}
+
+a {
+    color: #f08820;
+    text-decoration: none;
+}
+
+.wp-block-post-content > h1,
+.core-styles h1,
+.contentRender_name_plugins_core_textbox h1 {
+    color: #333232;
+    font-family: "The Bartender", sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 38px;
+    line-height: 1em;
+    letter-spacing: 0.32px;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+}
+
+.wp-block-post-content > h2,
+.core-styles h2,
+.contentRender_name_plugins_core_textbox h2 {
+    color: #333232;
+    font-family: "The Bartender", sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 1em;
+    letter-spacing: 0.32px;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+}
+
+.wp-block-post-content > h3,
+.core-styles h3,
+.contentRender_name_plugins_core_textbox h3 {
+    color: #6f6d6a;
+    font-family: "DDC Hardware", sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 1.8em;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+}
+
+.wp-block-post-content > h4,
+.core-styles h4,
+.contentRender_name_plugins_core_textbox h4 {
+    color: #333232;
+    font-family: "DDC Hardware", sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 1.8em;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+}
+
+.wp-block-post-content > h5,
+.core-styles h5,
+.contentRender_name_plugins_core_textbox h5 {
+    color: #6f6d6a;
+    font-family: "The Bartender Script", serif;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 1.3em;
+    margin-bottom: 8px;
+}
+
+.wp-block-post-content > h6,
+.core-styles h6,
+.contentRender_name_plugins_core_textbox h6 {
+    color: #f08820;
+    font-family: "The Bartender Cond Serif", serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 27px;
+    line-height: 2em;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+}
+
+.wp-block-post-content > p,
+.core-styles p,
+.contentRender_name_plugins_core_textbox p {
+    color: #333232;
+    font-family: "Muli", sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 1.75em;
+    margin-bottom: 30px;
+    text-rendering: optimizeLegibility;
+}
+
+.wp-block-post-content > a,
+.core-styles a,
+.contentRender_name_plugins_core_textbox a {
+    color: #f98d40;
+}
+
+.wp-block-post-content > a:hover,
+.core-styles a:hover,
+.contentRender_name_plugins_core_textbox a:hover {
+    text-decoration: underline;
+}
+
+.wp-block-post-content > ul li,
+.wp-block-post-content > ol li,
+.core-styles ul:not([class*="block-grid-"]) li,
+.core-styles ol:not([class*="block-grid-"]) li,
+.contentRender_name_plugins_core_textbox ul:not([class*="block-grid-"]) li,
+.contentRender_name_plugins_core_textbox ol:not([class*="block-grid-"]) li {
+    color: #333232;
+    font-family: "Muli", sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 17px;
+    line-height: 1.8em;
+    margin-bottom: 30px;
+    text-rendering: optimizeLegibility;
+}
+
+.wp-block-post-content > table td,
+.core-styles td,
+.contentRender_name_plugins_core_textbox td,
+.wp-block-post-content > table tr,
+.core-styles tr,
+.contentRender_name_plugins_core_textbox tr {
+    color: #333232;
+    font-family: "Muli", sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 15px;
+}
+
+h1 > a,
+h2 > a,
+h3 > a,
+h4 > a,
+h5 > a,
+h6 > a {
+    font: inherit;
+    color: inherit;
+    text-decoration: none;
+}
+
+.core-styles img[align*="right"],
+.contentRender_name_plugins_core_textbox img[align*="right"] { margin-left : 15px; margin-bottom: 5px; }
+.core-styles img[align*="left"],
+.contentRender_name_plugins_core_textbox img[align*="left"] { margin-right : 15px; margin-bottom: 5px; }
+
+@media screen and (min-width: 40em) {
+    .wp-block-post-content > h1,
+    .core-styles h1,
+    .contentRender_name_plugins_core_textbox h1 {
+        font-size: 52px;
+        line-height: 1.2em;
+    }
+}
+
+@media screen and (min-width: 64em) {
+    .wp-block-post-content > h1,
+    .core-styles h1,
+    .contentRender_name_plugins_core_textbox h1 {
+        font-size: 70px;
+        line-height: .9em;
+    }
+
+    .wp-block-post-content > h2,
+    .core-styles h2,
+    .contentRender_name_plugins_core_textbox h2 {
+        line-height: 1.1em;
+    }
+
+    .wp-block-post-content > h3,
+    .core-styles h3,
+    .contentRender_name_plugins_core_textbox h3 {
+        font-size: 35px;
+        line-height: 1.4em;
+    }
+
+    .wp-block-post-content > h4,
+    .core-styles h4,
+    .contentRender_name_plugins_core_textbox h4 {
+        line-height: 1.7em;
+    }
+
+    .wp-block-post-content > h5,
+    .core-styles h5,
+    .contentRender_name_plugins_core_textbox h5 {
+        line-height: 1.5em;
+    }
+
+}

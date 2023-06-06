@@ -1,0 +1,268 @@
+body .is-layout-constrained .core-side-by-side {
+    margin-bottom: 30px;
+    padding-top: 30px;
+}
+
+body .is-layout-constrained .core-side-by-side .photo-credit {
+    color: #fff;
+    font-family: "DDC Hardware", sans-serif;
+    background-color: #f08820;
+    position: absolute;
+    bottom: 0;
+    left: 11px;
+    font-size: 12px;
+    padding: 2px 8px;
+    letter-spacing: .1em;
+    pointer-events: none;
+}
+
+body .is-layout-constrained .core-side-by-side .title-cont h2 {
+    position: relative;
+    color: #6f6d6a;
+    font-family: "The Bartender Script", script;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 55px;
+    line-height: 1.3em;
+}
+
+body .is-layout-constrained .core-side-by-side .slide h4,
+body .is-layout-constrained .core-side-by-side .slide h4 a {
+    margin-top: 0;
+    font-family: "The Bartender", sans-serif;
+    font-size: 38px;
+    font-weight: 500;
+    color: #333232;
+    margin-bottom: 5px;
+    letter-spacing: 0.01em;
+    line-height: 1em;
+}
+
+body .is-layout-constrained .core-side-by-side .content-section p {
+    font-family: "Muli", sans-serif;
+    font-size: 17px;
+    line-height: 1.7em;
+    color: #333232;
+    margin-bottom: 11px;
+    font-weight: 500;
+    margin-top: 9px;
+    letter-spacing: .01em;
+}
+
+body .is-layout-constrained .core-side-by-side .content-section .read-more {
+    margin-top: 5px;
+    display: block;
+    color: #f08820;
+    font-family: "DDC Hardware", sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 1.8em;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+}
+
+body .is-layout-constrained .core-side-by-side.full-width .slides {
+    padding: 0 15px;
+}
+
+body .is-layout-constrained .core-side-by-side.slides-across-2 .slides {
+    padding: 0 15px;
+    max-width: 1270px;
+}
+
+body .is-layout-constrained .core-side-by-side .slide + .slide {
+    margin-top: 15px;
+}
+
+body .is-layout-constrained .core-side-by-side:not(.slides-across-2) .slide > .inner {
+    margin: 0 auto;
+    padding: 0 19px;
+    max-width: 1300px;
+    position: relative;
+}
+
+body .is-layout-constrained .core-side-by-side.full-width .slide > .inner {
+    padding: 0;
+    max-width: 100%;
+}
+
+body .is-layout-constrained .core-side-by-side .slide .content-section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+body .is-layout-constrained .core-side-by-side .slide .img-cont {
+    position: relative;
+    margin-bottom: 18px;
+    margin-top: 10px;
+    overflow: hidden;
+    z-index: 2;
+}
+
+body .is-layout-constrained .core-side-by-side .slide .inner .img-cont::before {
+    content: '';
+    height: calc(100% - 3px);
+    width: calc(100% - 3px);
+    border: 1px solid #cdccc5;
+    position: absolute;
+    top: -7px;
+    left: -7px;
+    z-index: -1;
+}
+
+body .is-layout-constrained .core-side-by-side .slide .img-cont img {
+    display: block;
+    width: 100%;
+}
+
+@media (min-width: 850px) {
+    body .is-layout-constrained .core-side-by-side .content-section .read-more i {
+        font-size:16px;
+    }
+    body .is-layout-constrained .core-side-by-side .slide .inner .img-cont::before {
+        height: calc(100% - 6px);
+        width: calc(100% - 6px);
+        border: 2px solid #cdccc5;
+        top: -21px;
+        left: -21px;
+    }
+    body .is-layout-constrained .core-side-by-side.full-width .slides {
+        padding: 0;
+    }
+    body .is-layout-constrained .core-side-by-side .slide .content-section .inner {
+        width: 100%;
+        max-width: 540px;
+    }
+    body .is-layout-constrained .core-side-by-side:not(.slides-across-2) .slide .content-section .inner {
+        padding-right: 36px;
+    }
+    body .is-layout-constrained .core-side-by-side .slide .img-cont {
+        margin-bottom: 0;
+    }
+    body .is-layout-constrained .core-side-by-side {
+        margin-bottom: 55px;
+        padding-top: 55px;
+        margin-left:30px
+    }
+    body .is-layout-constrained .core-side-by-side .slide > .inner {
+        display: flex;
+    }
+    body .is-layout-constrained .core-side-by-side .slide > .inner > * {
+        flex: 0 0 50%;
+    }
+    @supports (display: grid) {
+        body .is-layout-constrained .core-side-by-side .slide > .inner {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 20px;
+        }
+    }
+}
+
+@media (min-width: 1024px) {
+
+    body .is-layout-constrained .core-side-by-side .photo-credit {
+        left: 31px;
+        font-size: 19px;
+        padding: 10px 24px;
+        letter-spacing: .05em;
+    }
+
+    body .is-layout-constrained .core-side-by-side .title-cont h2 {
+        color: #333232;
+        font-size: 40px;
+        margin-bottom: 10px;
+    }
+
+    body .is-layout-constrained .core-side-by-side .slide h4,
+    body .is-layout-constrained .core-side-by-side .slide h4 a {
+        font-size: 49px;
+        line-height: 1.12em;
+        margin-bottom: 16px;
+    }
+    body .is-layout-constrained .core-side-by-side .content-section {
+        margin-left: 11px;
+    }
+    body .is-layout-constrained .core-side-by-side .content-section p {
+        font-size: 19px;
+        line-height: 1.65em;
+        margin-bottom: 16px;
+    }
+
+    body .is-layout-constrained .core-side-by-side .content-section .read-more {
+        font-size: 19px;
+        line-height: 1.8em;
+    }
+
+    body .is-layout-constrained .core-side-by-side.slides-across-2 .slides {
+        display: flex;
+    }
+
+    body .is-layout-constrained .core-side-by-side.slides-across-2 .slide > * {
+        flex: 0 0 50%;
+    }
+
+    @supports (display: grid) {
+        body .is-layout-constrained .core-side-by-side .slide > .inner {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 40px;
+        }
+
+        body .is-layout-constrained .core-side-by-side.reverse-slide-layout .slide > .inner {
+            grid-template-columns: 1fr 2fr;
+        }
+
+        body .is-layout-constrained .core-side-by-side.reverse-slide-layout .slide .img-cont {
+            order: 2;
+        }
+    }
+    body .is-layout-constrained .core-side-by-side.slides-across-2 .slide + .slide {
+        margin-top: 0;
+    }
+}
+
+/* This is for IE non-Grid specific styling */
+@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+    body .is-layout-constrained .core-side-by-side .slide .img-cont {
+        padding-bottom: 0;
+        height: auto;
+    }
+}
+
+body .is-layout-constrained .core-side-by-side .img-cont {
+    padding-bottom: calc(100% * 189 / 282);
+    height: 0;
+    background-color: #333;
+}
+
+@media screen and (min-width: 0px) {
+    body .is-layout-constrained .core-side-by-side .img-cont {
+        padding-bottom: calc(100% * 189 / 282);
+    }
+}
+
+@media screen and (min-width: 640px) {
+    body .is-layout-constrained .core-side-by-side .img-cont {
+        padding-bottom: calc(100% * 545 / 814);
+    }
+}
+
+@media screen and (min-width: 1024px) {
+    body .is-layout-constrained .core-side-by-side .img-cont {
+        padding-bottom: calc(100% * 545 / 814);
+    }
+}
+
+/**
+ * Backend
+ */
+
+.wp-block-acf-acf-side-by-side {
+    max-width: none !important;
+}
+.wp-block-acf-acf-side-by-side a {
+    text-decoration: none !important;
+}

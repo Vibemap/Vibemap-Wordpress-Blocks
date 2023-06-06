@@ -1,0 +1,412 @@
+.shared-detail .detail-top {
+    display: flex;
+    flex-direction: column-reverse;
+    background-color: #333232;
+}
+
+.shared-detail .detail-top .detail-gallery {
+    position: relative;
+}
+.shared-detail .detail-top .detail-gallery::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 35%;
+    background: linear-gradient(to top, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0) 100%);
+    pointer-events: none;
+}
+
+.shared-detail .detail-top .detail-gallery img {
+    width: 100%;
+}
+
+.shared-detail .detail-top .detail-gallery iframe {
+    position: absolute;
+    top: 0;
+}
+
+.shared-detail .detail-top .detail-gallery .gallery-count {
+    position: absolute;
+    bottom: 15px;
+    right: 15px;
+    color: #fff;
+    z-index: 1;
+}
+
+.shared-detail .detail-top .detail-gallery .gallery-count i {
+    margin-left: 2px;
+}
+
+.shared-detail .detail-top .info-section {
+    padding: 20px;
+}
+
+.shared-detail .detail-top .info-section .tb-detail {
+    background-color: #fff;
+    padding: 5px;
+    position: relative;
+    margin-bottom: 15px;
+    display: inline-flex;
+    align-items: center;
+    height: 30px;
+}
+
+.shared-detail .detail-top .info-section .tb-detail a {
+    color: #333232;
+    font-family: 'DDC Hardware', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 1em;
+    display: flex;
+    align-items: center;
+}
+
+.shared-detail .detail-top .info-section .tb-detail a i {
+    color: #f08820;
+    margin-right: 5px;
+    font-size: 14px;
+}
+
+.shared-detail .detail-top .info-section .tb-detail:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 50%;
+    border-left: 5px solid #fff;
+    border-right: 5px solid transparent;
+    border-top: 8px solid #fff;
+    border-bottom: 8px solid transparent;
+    transform: translateX(100%);
+}
+
+.shared-detail .detail-top .info-section .tb-detail:after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    height: 50%;
+    border-left: 5px solid #fff;
+    border-right: 5px solid transparent;
+    border-bottom: 8px solid #fff;
+    border-top: 8px solid transparent;
+    transform: translateX(100%);
+}
+
+.shared-detail .detail-top .info-section h1 {
+    font-family: 'The Bartender Cond Serif', serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 37px;
+    line-height: 1em;
+    color: #fff;
+    margin-bottom: 15px;
+}
+
+.shared-detail .detail-top .info-section p,
+.shared-detail .detail-top .info-section .locations,
+.shared-detail .detail-top .info-section .address,
+.shared-detail .detail-top .info-section .phone,
+.shared-detail .detail-top .info-section .tollfree {
+    color: #fff;
+    font-family: 'Muli', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 17px;
+    margin-bottom: 25px;
+}
+
+.shared-detail .detail-top .info-section .address {
+    display: flex;
+    align-items: flex-start;
+}
+
+.shared-detail .detail-top .info-section .address i,
+.shared-detail .detail-top .info-section .phone i,
+.shared-detail .detail-top .info-section .tollfree i{
+    margin-right: 10px;
+    margin-top: 3px;
+    transform: scaleX(-1);
+}
+
+.shared-detail a.action-item {
+    display: inline-block;
+    margin-bottom: 25px;
+    background-color: #f08820;
+    border: 1px solid #fff;
+    padding: 13px;
+    color: #fff;
+    font-family: 'DDC Hardware', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 21px;
+    line-height: 1em;
+}
+
+.shared-detail .social-icons {
+    display: flex;
+    list-style: none;
+    margin-left: 0;
+    margin-bottom: 10px;
+}
+
+.shared-detail .social-icons li {
+    margin-right: 25px;
+}
+
+.shared-detail .social-icons a {
+    font-size: 33px;
+    color: #fff;
+}
+
+.shared-detail .back-share-panel {
+    display: flex;
+    padding: 15px 15px 5px;
+    max-width: 1180px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.shared-detail .back-share-panel .back-button {
+    font-weight: 700;
+    margin-top: 2px;
+}
+
+.shared-detail .back-share-panel .back-button:hover {
+    color: rgb(240, 136, 32);
+}
+
+.shared-detail .back-share-panel .back-button i {
+    color: #6f6d6a;
+    font-size: 18px;
+    margin-right: 5px;
+}
+
+.shared-detail .back-share-panel .addThis {
+    margin-left: auto;
+}
+
+.shared-detail .back-share-panel .addThis  .share-buttons {
+    padding: 0;
+}
+
+.share-button {
+    display: none; /* Hide the share button before its added into the back-share-panel */
+}
+
+.shared-detail .share-button {
+    display: block;
+}
+
+.shared-detail .detail-panes {
+    max-width: 1180px;
+    padding: 0 15px;
+    margin: 0 auto;
+}
+
+.shared-detail .detail-panes p {
+    font-size: 17px;
+}
+
+.shared-detail button.drawer-button {
+    border: none;
+    border-bottom: 2px solid #f0c08c;
+    display: block;
+    margin-bottom: 20px;
+    position: relative;
+    background: transparent;
+    color: #333232;
+    padding: 0;
+    width: 100%;
+    text-align: left;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 48px;
+    font-family: 'The Bartender Cond Serif', serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 30px;
+    line-height: 1em;
+}
+
+.shared-detail .drawer-button .fa-minus {
+    display: none;
+}
+
+.shared-detail .active .drawer-button .fa-minus {
+    display: unset;
+}
+
+.shared-detail .active .drawer-button .fa-plus {
+    display: none;
+}
+
+.shared-detail button.drawer-button:focus {
+    outline: none;
+}
+
+.shared-detail button.drawer-button i {
+    font-size: 22px;
+}
+
+.shared-detail .detail-panes > dl.drawers > dd > .content {
+    display: none;
+    margin-bottom: 30px;
+}
+
+.shared-detail .detail-panes > dl.drawers > dd.active > .content {
+    display: block;
+}
+
+.shared-detail .gMapContainer .gMapHolder {
+    height: 280px;
+    margin-bottom: 10px;
+}
+
+@media screen and (min-width: 40em) {
+    .shared-detail .detail-top {
+        flex-direction: row;
+        margin-bottom: 10px;
+        justify-content: flex-end;
+    }
+
+    .shared-detail .detail-gallery {
+        height: 100%;
+    }
+
+    .shared-detail .detail-gallery picture img{
+        object-fit: contain;
+        height: 100%;
+        background: black;
+    }
+
+}
+@media screen and (min-width: 64em) {
+    .shared-detail .detail-top > div {
+        width: 50%;
+    }
+
+    .shared-detail .detail-top .info-section {
+        padding: 50px 15px;
+        max-width: 590px;
+        width: 50%;
+    }
+
+    .shared-detail .detail-top .info-section .tb-detail {
+        height: 37px;
+        margin-bottom: 30px;
+        padding: 5px 10px;
+    }
+
+    .shared-detail .detail-top .info-section .tb-detail:before {
+        border-top: 11px solid #fff;
+        border-bottom: 11px solid transparent;
+    }
+
+    .shared-detail .detail-top .info-section .tb-detail:after {
+        border-bottom: 11px solid #fff;
+        border-top: 11px solid transparent;
+    }
+
+    .shared-detail .detail-top .info-section .tb-detail a {
+        font-size: 15px;
+    }
+
+    .shared-detail .detail-top .info-section .tb-detail a i {
+        font-size: 20px;
+    }
+
+    .shared-detail .detail-top .info-section h1 {
+        font-size: 51px;
+    }
+
+    .shared-detail button.drawer-button {
+        font-size: 39px;
+        margin-bottom: 40px;
+    }
+
+    .shared-detail .detail-panes > dl.drawers > dd > .content {
+        margin-bottom: 70px;
+    }
+
+    .shared-detail .detail-gallery picture img{
+        object-fit: contain;
+        background: black;
+    }
+}
+
+.shared-detail .booking {
+    display: flex;
+    margin-bottom: 25px;
+}
+
+.shared-detail .booking .rate {
+    font-family: 'The Bartender Serif', sans-serif;
+    color: #fff;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: center;
+    padding-right: 15px;
+    border-right: 1px solid #605f5d;
+    margin-right: 15px;
+}
+
+.shared-detail .booking .check-rate {
+    font-size: 16px;
+}
+
+.shared-detail .booking .check-rate:hover {
+    color: #f08820;
+}
+
+.shared-detail .booking .check-rate i {
+    margin-left: 3px;
+    font-size: 12px;
+}
+
+.shared-detail .booking .rate .currency {
+    font-size: 30px;
+    line-height: 0.8em;
+}
+
+.shared-detail .booking .rate .amount {
+    font-size: 41px;
+    line-height: 0.7em;
+}
+
+.shared-detail .booking .rate .per {
+    font-size: 11px;
+    font-family: 'Muli', sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-left: 5px;
+    line-height: 1.2em;
+}
+
+.shared-detail .hide-ta {
+    display: none;
+}
+
+@media screen and (min-width: 64em) {
+    .shared-detail .booking .rate .currency {
+        font-size: 34px;
+        line-height: 0.8em;
+    }
+    .shared-detail .booking .rate .amount {
+        font-size: 48px;
+        line-height: 0.7em;
+    }
+    .shared-detail .booking .rate .per {
+        font-size: 12px;
+        line-height: 1.3em;
+    }
+    .shared-detail .booking .check-rate {
+        font-size: 17px;
+    }
+}

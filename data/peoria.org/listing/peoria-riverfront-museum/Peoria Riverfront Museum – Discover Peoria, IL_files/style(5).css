@@ -1,0 +1,214 @@
+body .is-layout-constrained .core-imagebox-two-across .slide {
+    margin-bottom: 10px;
+}
+
+body .is-layout-constrained .core-imagebox-two-across .inner {
+    position: relative;
+}
+
+body .is-layout-constrained .core-imagebox-two-across .img-cont {
+    position: relative;
+    overflow: hidden;
+}
+
+body:not(.wp-admin) .is-layout-constrained .core-imagebox-two-across:not(.full-width) .slides,
+body.wp-admin .is-layout-constrained .core-imagebox-two-across:not(.full-width) .slides > .block-editor-inner-blocks > .block-editor-block-list__layout {
+    max-width: 1200px;
+    padding-left: 19px;
+    padding-right: 19px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+body .is-layout-constrained .core-imagebox-two-across .img-cont::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 75%;
+    background: linear-gradient(to top, rgba(0,0,0,0.5), transparent);
+    pointer-events: none;
+}
+
+body .is-layout-constrained .core-imagebox-two-across .img-cont img {
+    width: 100%;
+}
+
+body .is-layout-constrained .core-imagebox-two-across .content-section h4,
+body .is-layout-constrained .core-imagebox-two-across .content-section h4 a {
+    margin-top: 23px;
+    font-family: "The Bartender", sans-serif;
+    font-size: 38px;
+    font-weight: 400;
+    line-height: 1em;
+    color: #333232;
+    margin-bottom: 5px;
+    letter-spacing: 0.01em;
+}
+
+body .is-layout-constrained .core-imagebox-two-across .content-section p {
+    font-family: "Muli", sans-serif;
+    font-size: 17px;
+    line-height: 1.7em;
+    color: #333232;
+    margin-bottom: 28px;
+    font-weight: 600;
+    margin-top: 13px;
+    letter-spacing: .01em;
+}
+
+body .is-layout-constrained .core-imagebox-two-across .content-section .read-more {
+    margin-top: 5px;
+    display: block;
+    color: #f08820;
+    font-family: "DDC Hardware", sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 1.8em;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+}
+
+@media screen and (min-width: 640px) {
+    @supports (display: grid) {
+        body:not(.wp-admin) .is-layout-constrained .core-imagebox-two-across:not(.slides-across-1) .slides,
+        body.wp-admin .is-layout-constrained .core-imagebox-two-across:not(.slides-across-1) .slides > .block-editor-inner-blocks > .block-editor-block-list__layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            column-gap: 10px;
+        }
+    }
+}
+
+@media screen and (min-width: 1024px) {
+    body .is-layout-constrained .core-imagebox-two-across .content-section h4,
+    body .is-layout-constrained .core-imagebox-two-across .content-section h4 a {
+        margin-top: 27px;
+        font-family: "The Bartender", sans-serif;
+        font-size: 45px;
+        line-height: 1.1em;
+        margin-bottom: 0px;
+        letter-spacing: 0.01em;
+    }
+    body .is-layout-constrained .core-imagebox-two-across .content-section p {
+        font-family: "Muli", sans-serif;
+        font-size: 19px;
+        line-height: 1.7em;
+        color: #333232;
+        margin-bottom: 28px;
+        font-weight: 600;
+        margin-top: 5px;
+        letter-spacing: .01em;
+    }
+    body .is-layout-constrained .core-imagebox-two-across .content-section .read-more {
+        margin-top: 9px;
+        display: block;
+        color: #f08820;
+        font-family: "DDC Hardware", sans-serif;
+        font-style: normal;
+        font-weight: 400;
+        font-size: 19px;
+        line-height: 1.8em;
+        text-transform: uppercase;
+        margin-bottom: 8px;
+    }
+    @supports (display: grid) {
+        body:not(.wp-admin) .is-layout-constrained .core-imagebox-two-across.slides-across-3 .slides,
+        body.wp-admin .is-layout-constrained .core-imagebox-two-across.slides-across-3 .slides > .block-editor-inner-blocks > .block-editor-block-list__layout {
+            grid-template-columns: 1fr 1fr 1fr;
+        }
+
+        body:not(.wp-admin) .is-layout-constrained .core-imagebox-two-across.slides-across-4 .slides,
+        body.wp-admin .is-layout-constrained .core-imagebox-two-across.slides-across-4 .slides > .block-editor-inner-blocks > .block-editor-block-list__layout {
+            grid-template-columns: 1fr 1fr 1fr 1fr;
+        }
+
+        body:not(.wp-admin) .is-layout-constrained .core-imagebox-two-across:not(.full-width) .slides,
+        body.wp-admin .is-layout-constrained .core-imagebox-two-across:not(.full-width) .slides > .block-editor-inner-blocks > .block-editor-block-list__layout {
+            column-gap: 55px;
+        }
+    }
+
+    body .is-layout-constrained .core-imagebox-two-across:not(.full-width) .slide {
+        margin-bottom: 40px;
+    }
+
+    body .is-layout-constrained .core-imagebox-two-across .content-section {
+        margin-right: 32px;
+    }
+}
+
+/* Internet Explorer Fallback */
+@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) and (min-width: 640px) {
+    body:not(.wp-admin) .is-layout-constrained .core-imagebox-two-across:not(.slides-across-1) .slides,
+    body.wp-admin .is-layout-constrained .core-imagebox-two-across:not(.slides-across-1) .slides > .block-editor-inner-blocks > .block-editor-block-list__layout {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    body .is-layout-constrained .core-imagebox-two-across:not(.slides-across-1) .slide {
+        width: 50%;
+    }
+
+    body .is-layout-constrained .core-imagebox-two-across .slide {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+}
+
+@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) and (min-width: 1024px) {
+    body .is-layout-constrained .core-imagebox-two-across.slides-across-2 .slide {
+        width: 50%;
+    }
+
+    body .is-layout-constrained .core-imagebox-two-across.slides-across-3 .slide {
+        width: 33.33333%;
+    }
+
+    body .is-layout-constrained .core-imagebox-two-across.slides-across-4 .slide {
+        width: 25%;
+    }
+
+    body .is-layout-constrained .core-imagebox-two-across .slide {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+}
+
+body .is-layout-constrained .core-imagebox-two-across .img-cont {
+    padding-bottom: calc(100% * 180 / 283);
+    height: 0;
+    background-color: #333;
+}
+
+@media screen and (min-width: 0px) {
+    body .is-layout-constrained .core-imagebox-two-across .img-cont {
+        padding-bottom: calc(100% * 180 / 283);
+    }
+}
+
+@media screen and (min-width: 640px) {
+    body .is-layout-constrained .core-imagebox-two-across .img-cont {
+        padding-bottom: calc(100% * 350 / 550);
+    }
+}
+
+@media screen and (min-width: 1024px) {
+    body .is-layout-constrained .core-imagebox-two-across .img-cont {
+        padding-bottom: calc(100% * 700 / 1100);
+    }
+}
+
+
+/**
+ * Backend
+ */
+
+.wp-block-acf-acf-imagebox-two-across {
+    max-width: none !important;
+}
+.wp-block-acf-acf-imagebox-two-across a {
+    text-decoration: none !important;
+}
