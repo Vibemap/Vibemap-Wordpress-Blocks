@@ -1,0 +1,24 @@
+{
+	"$schema": "https://json.schemastore.org/block.json",
+	"apiVersion": 2,
+	"name": "blocks/vibemap-map-mini",
+	"title": "Vibemap Mini Map",
+	"textdomain": "gutenberg-examples",
+	"icon": "location",
+	"category": "layout",
+	"keywords": [ "map", "listings" ],
+	"example": {
+		"attributes": {
+			"slug": "peoria-riverfront-museum",
+			"align": "center",
+			"class": "vibemap-embed vibemap-map-mini iframe",
+			"frameborder": "0",
+			"height": 500,
+			"width": "100%",
+			"scrolling": "yes"
+		}
+	},
+	"editorScript": "file:./index.js",
+	"editorStyle": "file:./index.css",
+	"style": "file:./style-index.css"
+}
