@@ -11,7 +11,7 @@ const Embed = ({
     ...props
 }) => {
 
-    const is_dev = true
+    const is_dev = false
     domain = is_dev
         ? `http://localhost:8080`
         : domain
