@@ -7,7 +7,7 @@
  * Version: 1.1.0
  * Author: the Gutenberg Team
  *
- * @package gutenberg-examples
+ * @package vibemap
  */
 
 defined( 'ABSPATH' ) || exit;
