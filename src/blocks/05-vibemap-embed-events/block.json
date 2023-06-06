@@ -1,0 +1,28 @@
+{
+	"$schema": "https://json.schemastore.org/block.json",
+	"apiVersion": 2,
+	"name": "blocks/vibemap-embed-events",
+	"title": "Vibemap Events Embed Blocks",
+	"textdomain": "gutenberg-examples",
+	"icon": "location-alt",
+	"category": "layout",
+	"keywords": [ "map", "listings", "events" ],
+	"example": {
+		"attributes": {
+			"content": "Hello world",
+			"embed": "events",
+			"cities": ["peoria"],
+			"categories": [],
+			"vibes": [],
+			"align": "center",
+			"class": "vibemap-embed iframe",
+			"frameborder": "0",
+			"height": 500,
+			"width": "100%",
+			"scrolling": "yes"
+		}
+	},
+	"editorScript": "file:./index.js",
+	"editorStyle": "file:./index.css",
+	"style": "file:./style-index.css"
+}
