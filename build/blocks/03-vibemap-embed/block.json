@@ -13,6 +13,11 @@
   "example": {
     "attributes": {
       "content": "Hello world",
+      "cities": [
+        "peoria"
+      ],
+      "categories": [],
+      "vibes": [],
       "align": "center",
       "class": "vibemap-embed iframe",
       "frameborder": "0",
