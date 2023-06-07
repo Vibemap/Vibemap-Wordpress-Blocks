@@ -194,7 +194,7 @@ const Embed = _ref => {
     vibes = [],
     ...props
   } = _ref;
-  const is_dev = true;
+  const is_dev = false;
   domain = is_dev ? `http://localhost:8080` : domain;
   console.log('Embed domain ', domain);
   const searchParams = new URLSearchParams({
