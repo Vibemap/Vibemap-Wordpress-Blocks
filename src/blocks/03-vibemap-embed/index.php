@@ -18,9 +18,8 @@ defined( 'ABSPATH' ) || exit;
  * Passes translations to JavaScript.
  */
 function register_block_vibemap_embed() {
-
 	// Register the block by passing the location of block.json.
 	register_block_type( __DIR__ );
-
 }
+
 add_action( 'init', 'register_block_vibemap_embed' );
