@@ -194,7 +194,7 @@ const Embed = _ref => {
     vibes = [],
     ...props
   } = _ref;
-  const is_dev = true;
+  const is_dev = false;
   domain = is_dev ? `http://localhost:8080` : domain;
   console.log('Embed domain ', domain);
   const searchParams = new URLSearchParams({
@@ -262,8 +262,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
 /* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _useFilterState_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./useFilterState.js */ "./src/components/Filters/useFilterState.js");
-
 
 
 
@@ -277,10 +275,13 @@ const Filters = _ref => {
     vibes_slugs,
     selectedCities,
     selectedCategories,
+    selectedTags,
     selectedVibes,
     setSelectedCities,
     setSelectedCategories,
+    setSelectedTags,
     setSelectedVibes,
+    tags = [],
     ...props
   } = _ref;
   const activityPicker = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.FormTokenField, {
@@ -299,6 +300,15 @@ const Filters = _ref => {
     suggestions: city_slugs,
     value: selectedCities
   });
+  console.log('DEBUG tags: ', tags);
+  const tagPicker = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.FormTokenField, {
+    __experimentalAutoSelectFirstMatch: true,
+    __experimentalExpandOnFocus: true,
+    label: "Type a tag",
+    onChange: tokens => setSelectedTags(tokens),
+    suggestions: tags,
+    value: selectedTags
+  });
   const vibePicker = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.FormTokenField, {
     __experimentalAutoSelectFirstMatch: true,
     __experimentalExpandOnFocus: true,
@@ -307,7 +317,7 @@ const Filters = _ref => {
     suggestions: vibes_slugs,
     value: selectedVibes
   });
-  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, activityPicker, cityPicker, vibePicker);
+  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, activityPicker, cityPicker, vibePicker, tagPicker);
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Filters);
 
@@ -365,18 +375,21 @@ const useFilterState = _ref => {
   let {
     cities = [],
     categories = [],
+    tags = [],
     vibes = [],
     ...props
   } = _ref;
-  console.log('DEBUG useFilterState: ', cities, categories, vibes);
+  console.log('DEBUG useFilterState: ', cities, categories, tags, vibes);
   const [selectedCities, setSelectedCities] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.useState)(cities);
   const [selectedCategories, setSelectedCategories] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.useState)(categories);
+  const [selectedTags, setSelectedTags] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.useState)(tags);
   const [selectedVibes, setSelectedVibes] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.useState)(vibes);
   return {
     // Data
     categories_all,
     category_slugs,
     city_slugs,
+    tags,
     vibes_slugs,
     // Getters
     selectedCities,
@@ -385,6 +398,7 @@ const useFilterState = _ref => {
     // Seters   
     setSelectedCities,
     setSelectedCategories,
+    setSelectedTags,
     setSelectedVibes
   };
 };

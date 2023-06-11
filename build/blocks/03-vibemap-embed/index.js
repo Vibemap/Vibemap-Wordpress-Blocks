@@ -16,15 +16,18 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_blocks__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @wordpress/block-editor */ "@wordpress/block-editor");
 /* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var _block_json__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./block.json */ "./src/blocks/03-vibemap-embed/block.json");
-/* harmony import */ var _components_Embed__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../components/Embed */ "./src/components/Embed/index.js");
-/* harmony import */ var _components_Filters__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../components/Filters */ "./src/components/Filters/index.js");
-/* harmony import */ var _components_Filters_useFilterState_js__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../components/Filters/useFilterState.js */ "./src/components/Filters/useFilterState.js");
-/* harmony import */ var _editor_scss__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./editor.scss */ "./src/blocks/03-vibemap-embed/editor.scss");
-/* harmony import */ var _style_css__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./style.css */ "./src/blocks/03-vibemap-embed/style.css");
+/* harmony import */ var _wordpress_data__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @wordpress/data */ "@wordpress/data");
+/* harmony import */ var _wordpress_data__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_wordpress_data__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _block_json__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./block.json */ "./src/blocks/03-vibemap-embed/block.json");
+/* harmony import */ var _components_Embed__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../components/Embed */ "./src/components/Embed/index.js");
+/* harmony import */ var _components_Filters__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../components/Filters */ "./src/components/Filters/index.js");
+/* harmony import */ var _components_Filters_useFilterState_js__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../components/Filters/useFilterState.js */ "./src/components/Filters/useFilterState.js");
+/* harmony import */ var _editor_scss__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./editor.scss */ "./src/blocks/03-vibemap-embed/editor.scss");
+/* harmony import */ var _style_css__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./style.css */ "./src/blocks/03-vibemap-embed/style.css");
 
 
 // WordPress dependencies
+
 
 
 
@@ -52,18 +55,43 @@ const Edit = props => {
   const {
     cities,
     categories,
+    tags,
     vibes
   } = attributes;
 
+  // TODO: get all tags
+  // List taxonomies: core.getTaxonomies()
+  // Get site info: core.getSite()
+  // core.getPlugin('vibemap')
+  const tag_options = (0,_wordpress_data__WEBPACK_IMPORTED_MODULE_4__.useSelect)(select => {
+    const core = select('core');
+    const tags_data = core.getEntityRecords('taxonomy', 'post_tag', {
+      per_page: -1,
+      page: 1
+    });
+    const tag_options = tags_data ? tags_data.map(tag => {
+      /* TODO: can it be an object
+      return {
+      	...tag,
+      	label: tag.name,
+      	value: tag.id
+      } */
+      return tag.name;
+    }) : [];
+    return tag_options;
+  });
+
   // Filters state, set by block attributes
-  const filterState = (0,_components_Filters_useFilterState_js__WEBPACK_IMPORTED_MODULE_7__["default"])({
+  const filterState = (0,_components_Filters_useFilterState_js__WEBPACK_IMPORTED_MODULE_8__["default"])({
     cities,
     categories,
+    tags: tag_options,
     vibes
   });
   const {
     selectedCities,
     selectedCategories,
+    selectedTags,
     selectedVibes
   } = filterState;
   console.log('DEBUG: filterState in embed ', filterState, selectedCities);
@@ -93,9 +121,9 @@ const Edit = props => {
   };
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(InspectorControls, {
     key: "inspector"
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_Filters__WEBPACK_IMPORTED_MODULE_6__["default"], filterState)), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", (0,_babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({}, blockProps, {
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_Filters__WEBPACK_IMPORTED_MODULE_7__["default"], filterState)), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", (0,_babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({}, blockProps, {
     style: blockStyle
-  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_Filters__WEBPACK_IMPORTED_MODULE_6__["default"], filterState), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("p", null, "Select the list and map options in the block panel on the right."), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_Embed__WEBPACK_IMPORTED_MODULE_5__["default"], (0,_babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({}, props, {
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_Filters__WEBPACK_IMPORTED_MODULE_7__["default"], filterState), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("p", null, "Select the list and map options in the block panel on the right."), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_Embed__WEBPACK_IMPORTED_MODULE_6__["default"], (0,_babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({}, props, {
     cities: selectedCities,
     categories: selectedCategories,
     vibes: selectedVibes
@@ -114,7 +142,7 @@ const Save = props => {
     vibes
   } = attributes;
   console.log('DEBUG: got attributes ', attributes, ' in save');
-  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_Embed__WEBPACK_IMPORTED_MODULE_5__["default"], (0,_babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({}, props, {
+  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_Embed__WEBPACK_IMPORTED_MODULE_6__["default"], (0,_babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({}, props, {
     cities: cities,
     categories: categories,
     vibes: vibes
@@ -125,7 +153,7 @@ const Save = props => {
 const {
   name,
   example
-} = _block_json__WEBPACK_IMPORTED_MODULE_4__;
+} = _block_json__WEBPACK_IMPORTED_MODULE_5__;
 
 // Register the block
 (0,_wordpress_blocks__WEBPACK_IMPORTED_MODULE_2__.registerBlockType)(name, {
@@ -190,7 +218,7 @@ const Embed = _ref => {
     vibes = [],
     ...props
   } = _ref;
-  const is_dev = true;
+  const is_dev = false;
   domain = is_dev ? `http://localhost:8080` : domain;
   console.log('Embed domain ', domain);
   const searchParams = new URLSearchParams({
@@ -258,8 +286,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
 /* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _useFilterState_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./useFilterState.js */ "./src/components/Filters/useFilterState.js");
-
 
 
 
@@ -273,10 +299,13 @@ const Filters = _ref => {
     vibes_slugs,
     selectedCities,
     selectedCategories,
+    selectedTags,
     selectedVibes,
     setSelectedCities,
     setSelectedCategories,
+    setSelectedTags,
     setSelectedVibes,
+    tags = [],
     ...props
   } = _ref;
   const activityPicker = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.FormTokenField, {
@@ -295,6 +324,15 @@ const Filters = _ref => {
     suggestions: city_slugs,
     value: selectedCities
   });
+  console.log('DEBUG tags: ', tags);
+  const tagPicker = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.FormTokenField, {
+    __experimentalAutoSelectFirstMatch: true,
+    __experimentalExpandOnFocus: true,
+    label: "Type a tag",
+    onChange: tokens => setSelectedTags(tokens),
+    suggestions: tags,
+    value: selectedTags
+  });
   const vibePicker = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.FormTokenField, {
     __experimentalAutoSelectFirstMatch: true,
     __experimentalExpandOnFocus: true,
@@ -303,7 +341,7 @@ const Filters = _ref => {
     suggestions: vibes_slugs,
     value: selectedVibes
   });
-  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, activityPicker, cityPicker, vibePicker);
+  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, activityPicker, cityPicker, vibePicker, tagPicker);
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Filters);
 
@@ -361,18 +399,21 @@ const useFilterState = _ref => {
   let {
     cities = [],
     categories = [],
+    tags = [],
     vibes = [],
     ...props
   } = _ref;
-  console.log('DEBUG useFilterState: ', cities, categories, vibes);
+  console.log('DEBUG useFilterState: ', cities, categories, tags, vibes);
   const [selectedCities, setSelectedCities] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.useState)(cities);
   const [selectedCategories, setSelectedCategories] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.useState)(categories);
+  const [selectedTags, setSelectedTags] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.useState)(tags);
   const [selectedVibes, setSelectedVibes] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.useState)(vibes);
   return {
     // Data
     categories_all,
     category_slugs,
     city_slugs,
+    tags,
     vibes_slugs,
     // Getters
     selectedCities,
@@ -381,6 +422,7 @@ const useFilterState = _ref => {
     // Seters   
     setSelectedCities,
     setSelectedCategories,
+    setSelectedTags,
     setSelectedVibes
   };
 };
@@ -2920,6 +2962,17 @@ module.exports = window["wp"]["blocks"];
 
 "use strict";
 module.exports = window["wp"]["components"];
+
+/***/ }),
+
+/***/ "@wordpress/data":
+/*!******************************!*\
+  !*** external ["wp","data"] ***!
+  \******************************/
+/***/ ((module) => {
+
+"use strict";
+module.exports = window["wp"]["data"];
 
 /***/ }),
 
