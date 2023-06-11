@@ -1,8 +1,6 @@
 import React from 'react'
 import { FormTokenField } from '@wordpress/components';
 
-import useFilterState from './useFilterState.js';
-
 // Props set from useFilterState
 const Filters = ({
   categories,
@@ -11,10 +9,13 @@ const Filters = ({
   vibes_slugs,
   selectedCities,
   selectedCategories,
+  selectedTags,
   selectedVibes,
   setSelectedCities,
   setSelectedCategories,
+  setSelectedTags,
   setSelectedVibes,
+  tags = [],
   ...props
 }) => {
 
@@ -40,6 +41,19 @@ const Filters = ({
     />
   )
 
+  console.log('DEBUG tags: ', tags);
+
+  const tagPicker = (
+    <FormTokenField
+      __experimentalAutoSelectFirstMatch
+      __experimentalExpandOnFocus
+      label="Type a tag"
+      onChange={(tokens) => setSelectedTags(tokens)}
+      suggestions={tags}
+      value={selectedTags}
+    />
+  )
+
   const vibePicker = (
     <FormTokenField
       __experimentalAutoSelectFirstMatch
@@ -56,7 +70,8 @@ const Filters = ({
       {activityPicker}
       {cityPicker}
       {vibePicker}
-    </>    
+      {tagPicker}
+    </>
   )
 }
 

@@ -2,6 +2,7 @@
 import { registerBlockType } from '@wordpress/blocks';
 import { useBlockProps } from '@wordpress/block-editor';
 import { useEffect } from '@wordpress/element';
+import { useSelect } from '@wordpress/data';
 
 const { InspectorControls } = wp.blockEditor;
 
@@ -22,16 +23,39 @@ const Edit = (props) => {
 	const blockProps = useBlockProps()
 	const { attributes } = props;
 
-	const { cities, categories, vibes } = attributes;
+	const { cities, categories, tags, vibes } = attributes;
+
+	// TODO: get all tags
+	// List taxonomies: core.getTaxonomies()
+	// Get site info: core.getSite()
+	// core.getPlugin('vibemap')
+	const tag_options = useSelect((select) => {
+		const core = select('core')
+		const tags_data = core.getEntityRecords('taxonomy', 'post_tag', { per_page: -1, page: 1 })
+		const tag_options = tags_data
+			? 
+				tags_data.map((tag) => {
+					/* TODO: can it be an object
+					return {
+						...tag,
+						label: tag.name,
+						value: tag.id
+					} */
+					return tag.name
+				})
+			: []
+		return tag_options
+	});
 
 	// Filters state, set by block attributes
-	const filterState = useFilterState({ cities, categories, vibes});
+	const filterState = useFilterState({ cities, categories, tags: tag_options, vibes});
 	const {
 		selectedCities,
 		selectedCategories,
-		selectedVibes,		
+		selectedTags,
+		selectedVibes
 	} = filterState;
-	console.log('DEBUG: filterState in embed ', filterState, selectedCities);
+	console.log('DEBUG: filterState in embed ', filterState, selectedCities);	
 
 	// Sync block attributes with filter state
 	const cityDep = JSON.stringify(selectedCities);

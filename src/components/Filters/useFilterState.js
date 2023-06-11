@@ -16,13 +16,15 @@ const vibes_slugs = getVibes()
 // Or the current state of the block attributes
 const useFilterState = ({ 
     cities = [], 
-    categories = [], 
+    categories = [],
+    tags = [],
     vibes = [], 
     ...props 
 }) => {
-    console.log('DEBUG useFilterState: ', cities, categories, vibes);
+    console.log('DEBUG useFilterState: ', cities, categories, tags, vibes);
     const [selectedCities, setSelectedCities] = useState(cities);
     const [selectedCategories, setSelectedCategories] = useState(categories);
+    const [selectedTags, setSelectedTags] = useState(tags);
     const [selectedVibes, setSelectedVibes] = useState(vibes);
 
     return { 
@@ -30,6 +32,7 @@ const useFilterState = ({
         categories_all,
         category_slugs,
         city_slugs,
+        tags,
         vibes_slugs,
         // Getters
         selectedCities,
@@ -38,7 +41,8 @@ const useFilterState = ({
         // Seters   
         setSelectedCities,
         setSelectedCategories,
-        setSelectedVibes,
+        setSelectedTags,
+        setSelectedVibes,        
     }
 }
 
