@@ -117,8 +117,9 @@ const Save = props => {
     categories,
     vibes
   } = attributes;
-  console.log('DEBUG: got attributes ', attributes, ' in save');
+  console.log('DEBUG: test got attributes ', attributes, ' in save');
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_Embed__WEBPACK_IMPORTED_MODULE_5__["default"], (0,_babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({}, props, {
+    path: "events",
     cities: cities,
     categories: categories,
     vibes: vibes

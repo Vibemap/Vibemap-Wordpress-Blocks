@@ -25,11 +25,11 @@ const Edit = (props) => {
 	const { cities, categories, vibes } = attributes;
 
 	// Filters state, set by block attributes
-	const filterState = useFilterState({ cities, categories, vibes});
+	const filterState = useFilterState({ cities, categories, vibes });
 	const {
 		selectedCities,
 		selectedCategories,
-		selectedVibes,		
+		selectedVibes,
 	} = filterState;
 	console.log('DEBUG: filterState in embed ', filterState, selectedCities);
 
@@ -51,15 +51,15 @@ const Edit = (props) => {
 
 	// TODO: add date range filter
 
-	const blockStyle = { 
-		padding: '20px', 
-		transform: 'scale(0.8)' 
+	const blockStyle = {
+		padding: '20px',
+		transform: 'scale(0.8)'
 	}
 
 	return (
 		<>
 			<InspectorControls key='inspector'>
-				<Filters {...filterState} />				
+				<Filters {...filterState} />
 			</InspectorControls>
 
 			<div {...blockProps} style={blockStyle}>
@@ -69,8 +69,8 @@ const Edit = (props) => {
 					path='events'
 					cities={selectedCities}
 					categories={selectedCategories}
-					vibes={selectedVibes}					 
-					/>
+					vibes={selectedVibes}
+				/>
 			</div>
 		</>
 	);
@@ -82,16 +82,19 @@ const Save = (props) => {
 	const { attributes } = props;
 	const {
 		cities,
-		categories, 
-		vibes 
+		categories,
+		vibes
 	} = attributes;
-	console.log('DEBUG: got attributes ', attributes, ' in save');
+	console.log('DEBUG: test got attributes ', attributes, ' in save');
 
-	return <Embed {...props} 
-		cities={cities}
-		categories={categories}
-		vibes={vibes} 
-		/>	
+	return (
+		<Embed {...props}
+			path='events'
+			cities={cities}
+			categories={categories}
+			vibes={vibes}
+		/>
+	)
 }
 
 // Destructure the json file to get the name and settings for the block
