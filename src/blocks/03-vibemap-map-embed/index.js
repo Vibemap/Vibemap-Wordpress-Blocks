@@ -33,8 +33,7 @@ const Edit = (props) => {
 		const core = select('core')
 		const tags_data = core.getEntityRecords('taxonomy', 'post_tag', { per_page: -1, page: 1 })
 		const tag_options = tags_data
-			? 
-				tags_data.map((tag) => {
+			? tags_data.map((tag) => {
 					/* TODO: can it be an object
 					return {
 						...tag,
@@ -55,7 +54,7 @@ const Edit = (props) => {
 		selectedTags,
 		selectedVibes
 	} = filterState;
-	console.log('DEBUG: filterState in embed ', filterState, selectedCities);	
+	console.log('DEBUG: filterState in embed ', filterState, selectedCities);
 
 	// Sync block attributes with filter state
 	const cityDep = JSON.stringify(selectedCities);
@@ -73,15 +72,15 @@ const Edit = (props) => {
 		props.setAttributes({ vibes: selectedVibes });
 	}, [vibeDep]);
 
-	const blockStyle = { 
-		padding: '20px', 
-		transform: 'scale(0.8)' 
+	const blockStyle = {
+		padding: '20px',
+		transform: 'scale(0.8)'
 	}
 
 	return (
 		<>
 			<InspectorControls key='inspector'>
-				<Filters {...filterState} />				
+				<Filters {...filterState} />
 			</InspectorControls>
 
 			<div {...blockProps} style={blockStyle}>
@@ -90,7 +89,7 @@ const Edit = (props) => {
 				<Embed {...props}
 					cities={selectedCities}
 					categories={selectedCategories}
-					vibes={selectedVibes}					 
+					vibes={selectedVibes}
 					/>
 			</div>
 		</>
@@ -103,16 +102,16 @@ const Save = (props) => {
 	const { attributes } = props;
 	const {
 		cities,
-		categories, 
-		vibes 
+		categories,
+		vibes
 	} = attributes;
 	console.log('DEBUG: got attributes ', attributes, ' in save');
 
-	return <Embed {...props} 
+	return <Embed {...props}
 		cities={cities}
 		categories={categories}
-		vibes={vibes} 
-		/>	
+		vibes={vibes}
+		/>
 }
 
 // Destructure the json file to get the name and settings for the block
