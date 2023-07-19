@@ -17,6 +17,9 @@ import useFilterState from '../../components/Filters/useFilterState.js';
 import './editor.scss';
 import './style.css';
 
+const previewHeight = 420;
+const outputHeight = 1000;
+
 // Editable UI and block attributes
 const Edit = (props) => {
 	const blockProps = useBlockProps()
@@ -67,6 +70,7 @@ const Edit = (props) => {
 				<p>Select the list and map options in the block panel on the right.</p>
 				<Embed {...props}
 					path='events'
+					height={previewHeight}
 					cities={selectedCities}
 					categories={selectedCategories}
 					vibes={selectedVibes}
@@ -90,6 +94,7 @@ const Save = (props) => {
 	return (
 		<Embed {...props}
 			path='events'
+			height={outputHeight}
 			cities={cities}
 			categories={categories}
 			vibes={vibes}

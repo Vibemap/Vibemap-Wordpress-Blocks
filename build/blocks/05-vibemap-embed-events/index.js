@@ -42,6 +42,8 @@ const {
 
 
 
+const previewHeight = 420;
+const outputHeight = 1000;
 
 // Editable UI and block attributes
 const Edit = props => {
@@ -100,6 +102,7 @@ const Edit = props => {
     style: blockStyle
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_Filters__WEBPACK_IMPORTED_MODULE_6__["default"], filterState), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("p", null, "Select the list and map options in the block panel on the right."), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_Embed__WEBPACK_IMPORTED_MODULE_5__["default"], (0,_babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({}, props, {
     path: "events",
+    height: previewHeight,
     cities: selectedCities,
     categories: selectedCategories,
     vibes: selectedVibes
@@ -120,6 +123,7 @@ const Save = props => {
   console.log('DEBUG: test got attributes ', attributes, ' in save');
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_Embed__WEBPACK_IMPORTED_MODULE_5__["default"], (0,_babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({}, props, {
     path: "events",
+    height: outputHeight,
     cities: cities,
     categories: categories,
     vibes: vibes
