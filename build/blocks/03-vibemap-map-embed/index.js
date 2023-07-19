@@ -1,10 +1,10 @@
 /******/ (() => { // webpackBootstrap
 /******/ 	var __webpack_modules__ = ({
 
-/***/ "./src/blocks/03-vibemap-embed/index.js":
-/*!**********************************************!*\
-  !*** ./src/blocks/03-vibemap-embed/index.js ***!
-  \**********************************************/
+/***/ "./src/blocks/03-vibemap-map-embed/index.js":
+/*!**************************************************!*\
+  !*** ./src/blocks/03-vibemap-map-embed/index.js ***!
+  \**************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -18,12 +18,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__);
 /* harmony import */ var _wordpress_data__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @wordpress/data */ "@wordpress/data");
 /* harmony import */ var _wordpress_data__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_wordpress_data__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var _block_json__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./block.json */ "./src/blocks/03-vibemap-embed/block.json");
+/* harmony import */ var _block_json__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./block.json */ "./src/blocks/03-vibemap-map-embed/block.json");
 /* harmony import */ var _components_Embed__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../components/Embed */ "./src/components/Embed/index.js");
 /* harmony import */ var _components_Filters__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../components/Filters */ "./src/components/Filters/index.js");
 /* harmony import */ var _components_Filters_useFilterState_js__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../components/Filters/useFilterState.js */ "./src/components/Filters/useFilterState.js");
-/* harmony import */ var _editor_scss__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./editor.scss */ "./src/blocks/03-vibemap-embed/editor.scss");
-/* harmony import */ var _style_css__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./style.css */ "./src/blocks/03-vibemap-embed/style.css");
+/* harmony import */ var _editor_scss__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./editor.scss */ "./src/blocks/03-vibemap-map-embed/editor.scss");
+/* harmony import */ var _style_css__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./style.css */ "./src/blocks/03-vibemap-map-embed/style.css");
 
 
 // WordPress dependencies
@@ -224,10 +224,13 @@ const Embed = _ref => {
   const searchParams = new URLSearchParams({
     embedded: 1,
     placeLayout: 'both',
+    activities: categories,
+    // TODO: rename to categories
     cities: city,
     vibes: vibes
   });
   const src = `${domain}/${path}/?${searchParams}`;
+  console.log('DEBUG: Embed src ', src, ' in Embed');
   const iframe = `<iframe
             allowtransparency="true"
             allowfullscreen="true"
@@ -2883,10 +2886,10 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*
 
 /***/ }),
 
-/***/ "./src/blocks/03-vibemap-embed/style.css":
-/*!***********************************************!*\
-  !*** ./src/blocks/03-vibemap-embed/style.css ***!
-  \***********************************************/
+/***/ "./src/blocks/03-vibemap-map-embed/style.css":
+/*!***************************************************!*\
+  !*** ./src/blocks/03-vibemap-map-embed/style.css ***!
+  \***************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -2896,10 +2899,10 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./src/blocks/03-vibemap-embed/editor.scss":
-/*!*************************************************!*\
-  !*** ./src/blocks/03-vibemap-embed/editor.scss ***!
-  \*************************************************/
+/***/ "./src/blocks/03-vibemap-map-embed/editor.scss":
+/*!*****************************************************!*\
+  !*** ./src/blocks/03-vibemap-map-embed/editor.scss ***!
+  \*****************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -3059,10 +3062,10 @@ module.exports = "description|Arousing+amusement+in+the+silly+and+illogical|name
 
 /***/ }),
 
-/***/ "./src/blocks/03-vibemap-embed/block.json":
-/*!************************************************!*\
-  !*** ./src/blocks/03-vibemap-embed/block.json ***!
-  \************************************************/
+/***/ "./src/blocks/03-vibemap-map-embed/block.json":
+/*!****************************************************!*\
+  !*** ./src/blocks/03-vibemap-map-embed/block.json ***!
+  \****************************************************/
 /***/ ((module) => {
 
 "use strict";
@@ -3187,8 +3190,8 @@ module.exports = JSON.parse('{"$schema":"https://json.schemastore.org/block.json
 /******/ 		// undefined = chunk not loaded, null = chunk preloaded/prefetched
 /******/ 		// [resolve, reject, Promise] = chunk loading, 0 = chunk loaded
 /******/ 		var installedChunks = {
-/******/ 			"03-vibemap-embed/index": 0,
-/******/ 			"03-vibemap-embed/style-index": 0
+/******/ 			"03-vibemap-map-embed/index": 0,
+/******/ 			"03-vibemap-map-embed/style-index": 0
 /******/ 		};
 /******/ 		
 /******/ 		// no chunk on demand loading
@@ -3238,7 +3241,7 @@ module.exports = JSON.parse('{"$schema":"https://json.schemastore.org/block.json
 /******/ 	// startup
 /******/ 	// Load entry module and return exports
 /******/ 	// This entry module depends on other loaded chunks and execution need to be delayed
-/******/ 	var __webpack_exports__ = __webpack_require__.O(undefined, ["03-vibemap-embed/style-index"], () => (__webpack_require__("./src/blocks/03-vibemap-embed/index.js")))
+/******/ 	var __webpack_exports__ = __webpack_require__.O(undefined, ["03-vibemap-map-embed/style-index"], () => (__webpack_require__("./src/blocks/03-vibemap-map-embed/index.js")))
 /******/ 	__webpack_exports__ = __webpack_require__.O(__webpack_exports__);
 /******/ 	
 /******/ })()
