@@ -21,11 +21,14 @@ const Embed = ({
     const searchParams = new URLSearchParams({
         embedded: 1,
         placeLayout: 'both',
+        activities: categories, // TODO: rename to categories
         cities: city,
         vibes: vibes,
     });
 
     const src = `${domain}/${path}/?${searchParams}`
+
+    console.log('DEBUG: Embed src ', src, ' in Embed');
 
     const iframe = (
         `<iframe
