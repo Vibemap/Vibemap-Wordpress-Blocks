@@ -28,6 +28,6 @@
 		"@wordpress/scripts": "^25.0.0"
 	},
 	"dependencies": {
-		"vibemap-constants": "^1.7.9"
+		"vibemap-constants": "^1.7.14"
 	}
 }
