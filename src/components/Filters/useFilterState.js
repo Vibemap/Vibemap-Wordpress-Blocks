@@ -3,6 +3,8 @@ import { useState } from '@wordpress/element';
 
 import allActivities from 'vibemap-constants/dist/activityCategories.json'
 import cities from 'vibemap-constants/dist/cities.json'
+import { getAllBoundaries } from 'vibemap-constants/dist/helpers'
+
 import { getVibes, getCategoriesByLevel } from 'vibemap-constants/dist/vibes.js'
 
 const categories1 = getCategoriesByLevel(1)

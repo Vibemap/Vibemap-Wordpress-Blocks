@@ -23,7 +23,7 @@ const Edit = (props) => {
 	const blockProps = useBlockProps()
 	const { attributes } = props;
 
-	const { cities, categories, tags, vibes } = attributes;
+	const { cities, categories, tags, vibes } = attributes;	
 
 	// TODO: get all tags
 	// List taxonomies: core.getTaxonomies()
@@ -77,6 +77,8 @@ const Edit = (props) => {
 		transform: 'scale(0.8)'
 	}
 
+	const firstCity = selectedCities
+
 	return (
 		<>
 			<InspectorControls key='inspector'>
@@ -87,6 +89,7 @@ const Edit = (props) => {
 				<Filters {...filterState} />
 				<p>Select the list and map options in the block panel on the right.</p>
 				<Embed {...props}
+					city={firstCity}
 					cities={selectedCities}
 					categories={selectedCategories}
 					vibes={selectedVibes}
@@ -105,7 +108,7 @@ const Save = (props) => {
 		categories,
 		vibes
 	} = attributes;
-	console.log('DEBUG: got attributes ', attributes, ' in save');
+	console.log('TEST DEBUG: got attributes ', attributes, ' in save');
 
 	return <Embed {...props}
 		cities={cities}
