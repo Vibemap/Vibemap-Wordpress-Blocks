@@ -3,8 +3,6 @@ import { useState } from '@wordpress/element';
 
 import allActivities from 'vibemap-constants/dist/activityCategories.json'
 import cities from 'vibemap-constants/dist/cities.json'
-import { getAllBoundaries } from 'vibemap-constants/dist/helpers'
-
 import { getVibes, getCategoriesByLevel } from 'vibemap-constants/dist/vibes.js'
 
 const categories1 = getCategoriesByLevel(1)
@@ -16,12 +14,12 @@ const vibes_slugs = getVibes()
 
 // Initial state is set in the block.json file
 // Or the current state of the block attributes
-const useFilterState = ({ 
-    cities = [], 
+const useFilterState = ({
+    cities = [],
     categories = [],
     tags = [],
-    vibes = [], 
-    ...props 
+    vibes = [],
+    ...props
 }) => {
     console.log('DEBUG useFilterState: ', cities, categories, tags, vibes);
     const [selectedCities, setSelectedCities] = useState(cities);
@@ -29,7 +27,7 @@ const useFilterState = ({
     const [selectedTags, setSelectedTags] = useState(tags);
     const [selectedVibes, setSelectedVibes] = useState(vibes);
 
-    return { 
+    return {
         // Data
         categories_all,
         category_slugs,
@@ -39,12 +37,13 @@ const useFilterState = ({
         // Getters
         selectedCities,
         selectedCategories,
+        selectedTags,
         selectedVibes,
-        // Seters   
+        // Seters
         setSelectedCities,
         setSelectedCategories,
         setSelectedTags,
-        setSelectedVibes,        
+        setSelectedVibes,
     }
 }
 

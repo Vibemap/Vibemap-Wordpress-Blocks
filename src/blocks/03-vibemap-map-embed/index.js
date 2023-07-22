@@ -23,7 +23,7 @@ const Edit = (props) => {
 	const blockProps = useBlockProps()
 	const { attributes } = props;
 
-	const { cities, categories, tags, vibes } = attributes;	
+	const { cities, categories, tags, vibes } = attributes;
 
 	// TODO: get all tags
 	// List taxonomies: core.getTaxonomies()
@@ -67,6 +67,11 @@ const Edit = (props) => {
 		props.setAttributes({ categories: selectedCategories });
 	}, [catDep]);
 
+	const tagDep = JSON.stringify(selectedTags);
+	useEffect(() => {
+		props.setAttributes({ tags: selectedTags });
+	}, [tagDep]);
+
 	const vibeDep = JSON.stringify(selectedVibes);
 	useEffect(() => {
 		props.setAttributes({ vibes: selectedVibes });
@@ -77,7 +82,7 @@ const Edit = (props) => {
 		transform: 'scale(0.8)'
 	}
 
-	const firstCity = selectedCities
+	const firstCity = selectedCities[0]
 
 	return (
 		<>
@@ -92,6 +97,7 @@ const Edit = (props) => {
 					city={firstCity}
 					cities={selectedCities}
 					categories={selectedCategories}
+					tags={selectedTags}
 					vibes={selectedVibes}
 					/>
 			</div>
@@ -106,13 +112,18 @@ const Save = (props) => {
 	const {
 		cities,
 		categories,
+		tags,
 		vibes
 	} = attributes;
-	console.log('TEST DEBUG: got attributes ', attributes, ' in save');
+
+	const firstCity = cities[0]
+	console.log('TEST DEBUG: got attributes ', attributes, firstCity);
 
 	return <Embed {...props}
+		city={firstCity}
 		cities={cities}
 		categories={categories}
+		tags={tags}
 		vibes={vibes}
 		/>
 }
@@ -138,6 +149,10 @@ registerBlockType(name, {
 		"cities": {
 			"type": "array",
 			"default": example?.attributes?.cities
+		},
+		"tags": {
+			"type": "array",
+			"default": example?.attributes?.tags
 		},
 		"vibes": {
 			"type": "array",
