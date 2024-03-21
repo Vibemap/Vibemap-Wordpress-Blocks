@@ -29,14 +29,14 @@ const Edit = (props) => {
 	// Filters state, set by block attributes
 	const filterState = useFilterState({ cities });
 	const {
-		selectedCities,
+		citiesSelected,
 	} = filterState;
-	console.log('DEBUG: filterState in embed ', filterState, selectedCities);
+	console.log('DEBUG: filterState in embed ', filterState, citiesSelected);
 
 	// Sync block attributes with filter state
-	const cityDep = JSON.stringify(selectedCities);
+	const cityDep = JSON.stringify(citiesSelected);
 	useEffect(() => {
-		props.setAttributes({ cities: selectedCities });
+		props.setAttributes({ cities: citiesSelected });
 	}, [cityDep]);
 
 
@@ -56,7 +56,7 @@ const Edit = (props) => {
 				<Embed {...props}
 					path='add-event'
 					height={previewHeight}
-					cities={selectedCities}
+					cities={citiesSelected}
 				/>
 			</div>
 		</>

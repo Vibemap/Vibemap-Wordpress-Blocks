@@ -40,26 +40,33 @@ const Edit = (props) => {
 	});
 
 	// Filters state, set by block attributes
-	const filterState = useFilterState({ cities, categories, tags: tag_options, vibes});
+	const filterState = useFilterState({
+		cities,
+		categories,
+		tags,
+		tagsAll: tag_options,
+		vibes
+	});
+
 	const {
-		selectedCities,
-		selectedCategories,
+		citiesSelected,
+		categoriesSelected,
 		tagsSelected,
 		vibesSelected,
 		radius,
 		zoom,
 	} = filterState;
-	console.log('DEBUG: filterState in embed ', filterState, selectedCities);
+	console.log('DEBUG: filterState in embed ', filterState, citiesSelected);
 
 	// Sync block attributes with filter state
-	const cityDep = JSON.stringify(selectedCities);
+	const cityDep = JSON.stringify(citiesSelected);
 	useEffect(() => {
-		props.setAttributes({ cities: selectedCities });
+		props.setAttributes({ cities: citiesSelected });
 	}, [cityDep]);
 
-	const catDep = JSON.stringify(selectedCategories);
+	const catDep = JSON.stringify(categoriesSelected);
 	useEffect(() => {
-		props.setAttributes({ categories: selectedCategories });
+		props.setAttributes({ categories: categoriesSelected });
 	}, [catDep]);
 
 	const tagDep = JSON.stringify(tagsSelected);
@@ -77,7 +84,7 @@ const Edit = (props) => {
 		transform: 'scale(0.8)'
 	}
 
-	const firstCity = selectedCities[0]
+	const firstCity = citiesSelected[0]
 
 	return (
 		<>
@@ -90,8 +97,8 @@ const Edit = (props) => {
 				<p>Select the list and map options in the block panel on the right.</p>
 				<Embed {...props}
 					city={firstCity}
-					cities={selectedCities}
-					categories={selectedCategories}
+					cities={citiesSelected}
+					categories={categoriesSelected}
 					height={height}
 					tags={tagsSelected}
 					vibes={vibesSelected}

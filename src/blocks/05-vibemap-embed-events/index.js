@@ -47,27 +47,27 @@ const Edit = (props) => {
 		cities,
 		categories,
 		vibesSelected: vibes,
-		tagsSelected: tags,
-		tags: tag_options,
+		tags,
+		tagsAll: tag_options,
 		vibes
 	});
 	const {
-		selectedCities,
-		selectedCategories,
+		citiesSelected,
+		categoriesSelected,
 		tagsSelected,
 		vibesSelected,
 	} = filterState;
-	console.log('DEBUG: filterState in embed ', filterState, selectedCities);
+	console.log('DEBUG: filterState in embed ', filterState, citiesSelected);
 
 	// Sync block attributes with filter state
-	const cityDep = JSON.stringify(selectedCities);
+	const cityDep = JSON.stringify(citiesSelected);
 	useEffect(() => {
-		props.setAttributes({ cities: selectedCities });
+		props.setAttributes({ cities: citiesSelected });
 	}, [cityDep]);
 
-	const catDep = JSON.stringify(selectedCategories);
+	const catDep = JSON.stringify(categoriesSelected);
 	useEffect(() => {
-		props.setAttributes({ categories: selectedCategories });
+		props.setAttributes({ categories: categoriesSelected });
 	}, [catDep]);
 
 	const tagsDep = JSON.stringify(tagsSelected);
@@ -101,8 +101,8 @@ const Edit = (props) => {
 				<Embed {...props}
 					path='events'
 					height={height}
-					cities={selectedCities}
-					categories={selectedCategories}
+					cities={citiesSelected}
+					categories={categoriesSelected}
 					tags={tagsSelected}
 					vibes={vibesSelected}
 				/>

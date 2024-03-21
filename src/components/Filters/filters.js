@@ -7,12 +7,12 @@ const Filters = ({
   category_slugs,
   city_slugs,
   vibes_slugs,
-  selectedCities,
-  selectedCategories,
+  citiesSelected,
+  categoriesSelected,
   tagsSelected,
   vibesSelected,
-  setSelectedCities,
-  setSelectedCategories,
+  setCitiesSelected,
+  setCategoriesSelected,
   setTagsSelected,
   setVibesSelected,
   tags = [],
@@ -55,9 +55,9 @@ const Filters = ({
       __experimentalAutoSelectFirstMatch
       __experimentalExpandOnFocus
       label="Type a category"
-      onChange={(tokens) => setSelectedCategories(tokens)}
+      onChange={(tokens) => setCategoriesSelected(tokens)}
       suggestions={category_slugs}
-      value={selectedCategories}
+      value={categoriesSelected}
     />
   )
 
@@ -66,9 +66,9 @@ const Filters = ({
       __experimentalAutoSelectFirstMatch
       __experimentalExpandOnFocus
       label="Type a city"
-      onChange={(tokens) => setSelectedCities(tokens)}
+      onChange={(tokens) => setCitiesSelected(tokens)}
       suggestions={city_slugs}
-      value={selectedCities}
+      value={citiesSelected}
     />
   )
 
