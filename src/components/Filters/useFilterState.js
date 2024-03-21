@@ -19,13 +19,19 @@ const useFilterState = ({
     categories = [],
     tags = [],
     vibes = [],
+    heightDef = 800,
+    radiusDef = 60,
+    zoomDef = 14,
     ...props
 }) => {
     console.log('DEBUG useFilterState: ', cities, categories, tags, vibes);
     const [selectedCities, setSelectedCities] = useState(cities);
     const [selectedCategories, setSelectedCategories] = useState(categories);
-    const [selectedTags, setSelectedTags] = useState(tags);
-    const [selectedVibes, setSelectedVibes] = useState(vibes);
+    const [tagsSelected, setTagsSelected] = useState(tags);
+    const [vibesSelected, setVibesSelected] = useState(vibes);
+    const [height, setHeight] = useState(heightDef);
+    const [radius, setRadius] = useState(radiusDef);
+    const [zoom, setZoom] = useState(zoomDef);
 
     return {
         // Data
@@ -37,13 +43,19 @@ const useFilterState = ({
         // Getters
         selectedCities,
         selectedCategories,
-        selectedTags,
-        selectedVibes,
-        // Seters
+        tagsSelected,
+        vibesSelected,
+        height,
+        radius,
+        zoom,
+        // Setters
         setSelectedCities,
         setSelectedCategories,
-        setSelectedTags,
-        setSelectedVibes,
+        setTagsSelected,
+        setVibesSelected,
+        setHeight,
+        setRadius,
+        setZoom
     }
 }
 

@@ -2,6 +2,8 @@
 import { registerBlockType } from '@wordpress/blocks';
 import { useBlockProps } from '@wordpress/block-editor';
 import { useEffect } from '@wordpress/element';
+import { useSelect } from '@wordpress/data';
+
 
 const { InspectorControls } = wp.blockEditor;
 
@@ -18,21 +20,42 @@ import './editor.scss';
 import './style.css';
 
 const previewHeight = 420;
-const outputHeight = 1000;
+const outputHeight = 2000;
 
 // Editable UI and block attributes
 const Edit = (props) => {
 	const blockProps = useBlockProps()
 	const { attributes } = props;
+	const { cities, categories, height = outputHeight, tags, vibes, zoom } = attributes;
+	console.log('DEBUG: test WP got attributes ', attributes);
 
-	const { cities, categories, vibes } = attributes;
+	// TODO: make this reuable
+	const tag_options = useSelect((select) => {
+		const core = select('core')
+		const tags_data = core.getEntityRecords('taxonomy', 'post_tag', { per_page: -1, page: 1 })
+		const tag_options = tags_data
+			? tags_data.map((tag) => {
+				return tag.name
+			})
+			: []
+		return tag_options
+	});
+
 
 	// Filters state, set by block attributes
-	const filterState = useFilterState({ cities, categories, vibes });
+	const filterState = useFilterState({
+		cities,
+		categories,
+		vibesSelected: vibes,
+		tagsSelected: tags,
+		tags: tag_options,
+		vibes
+	});
 	const {
 		selectedCities,
 		selectedCategories,
-		selectedVibes,
+		tagsSelected,
+		vibesSelected,
 	} = filterState;
 	console.log('DEBUG: filterState in embed ', filterState, selectedCities);
 
@@ -47,9 +70,16 @@ const Edit = (props) => {
 		props.setAttributes({ categories: selectedCategories });
 	}, [catDep]);
 
-	const vibeDep = JSON.stringify(selectedVibes);
+	const tagsDep = JSON.stringify(tagsSelected);
+	console.log('DEBUG: tagsDep ', tagsDep);
 	useEffect(() => {
-		props.setAttributes({ vibes: selectedVibes });
+		console.log('DEBUG: setting tags in block attributes ', tags);
+		props.setAttributes({ tags: tagsSelected });
+	}, [tagsDep]);
+
+	const vibeDep = JSON.stringify(vibesSelected);
+	useEffect(() => {
+		props.setAttributes({ vibes: vibesSelected });
 	}, [vibeDep]);
 
 	// TODO: add date range filter
@@ -70,10 +100,11 @@ const Edit = (props) => {
 				<p>Select the list and map options in the block panel on the right.</p>
 				<Embed {...props}
 					path='events'
-					height={previewHeight}
+					height={height}
 					cities={selectedCities}
 					categories={selectedCategories}
-					vibes={selectedVibes}
+					tags={tagsSelected}
+					vibes={vibesSelected}
 				/>
 			</div>
 		</>
@@ -87,6 +118,7 @@ const Save = (props) => {
 	const {
 		cities,
 		categories,
+		tags,
 		vibes
 	} = attributes;
 	console.log('DEBUG: test got attributes ', attributes, ' in save');
@@ -97,6 +129,7 @@ const Save = (props) => {
 			height={outputHeight}
 			cities={cities}
 			categories={categories}
+			tags={tags}
 			vibes={vibes}
 		/>
 	)
@@ -123,6 +156,10 @@ registerBlockType(name, {
 		"cities": {
 			"type": "array",
 			"default": example?.attributes?.cities
+		},
+		"tags": {
+			"type": "array",
+			"default": example?.attributes?.tags
 		},
 		"vibes": {
 			"type": "array",

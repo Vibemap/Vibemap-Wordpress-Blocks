@@ -18,7 +18,7 @@ import './editor.scss';
 import './style.css';
 
 const previewHeight = 420;
-const outputHeight = 1600;
+const outputHeight = 1800;
 
 // Editable UI and block attributes
 const Edit = (props) => {

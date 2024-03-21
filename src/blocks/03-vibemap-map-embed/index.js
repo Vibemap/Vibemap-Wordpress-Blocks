@@ -22,8 +22,7 @@ import './style.css';
 const Edit = (props) => {
 	const blockProps = useBlockProps()
 	const { attributes } = props;
-
-	const { cities, categories, tags, vibes } = attributes;
+	const { cities, categories, height, tags, vibes } = attributes;
 
 	// TODO: get all tags
 	// List taxonomies: core.getTaxonomies()
@@ -34,14 +33,8 @@ const Edit = (props) => {
 		const tags_data = core.getEntityRecords('taxonomy', 'post_tag', { per_page: -1, page: 1 })
 		const tag_options = tags_data
 			? tags_data.map((tag) => {
-					/* TODO: can it be an object
-					return {
-						...tag,
-						label: tag.name,
-						value: tag.id
-					} */
-					return tag.name
-				})
+				return tag.name
+			})
 			: []
 		return tag_options
 	});
@@ -51,8 +44,10 @@ const Edit = (props) => {
 	const {
 		selectedCities,
 		selectedCategories,
-		selectedTags,
-		selectedVibes
+		tagsSelected,
+		vibesSelected,
+		radius,
+		zoom,
 	} = filterState;
 	console.log('DEBUG: filterState in embed ', filterState, selectedCities);
 
@@ -67,14 +62,14 @@ const Edit = (props) => {
 		props.setAttributes({ categories: selectedCategories });
 	}, [catDep]);
 
-	const tagDep = JSON.stringify(selectedTags);
+	const tagDep = JSON.stringify(tagsSelected);
 	useEffect(() => {
-		props.setAttributes({ tags: selectedTags });
+		props.setAttributes({ tags: tagsSelected });
 	}, [tagDep]);
 
-	const vibeDep = JSON.stringify(selectedVibes);
+	const vibeDep = JSON.stringify(vibesSelected);
 	useEffect(() => {
-		props.setAttributes({ vibes: selectedVibes });
+		props.setAttributes({ vibes: vibesSelected });
 	}, [vibeDep]);
 
 	const blockStyle = {
@@ -97,8 +92,11 @@ const Edit = (props) => {
 					city={firstCity}
 					cities={selectedCities}
 					categories={selectedCategories}
-					tags={selectedTags}
-					vibes={selectedVibes}
+					height={height}
+					tags={tagsSelected}
+					vibes={vibesSelected}
+					radius={radius}
+					zoom={zoom}
 					/>
 			</div>
 		</>
@@ -113,19 +111,27 @@ const Save = (props) => {
 		cities,
 		categories,
 		tags,
-		vibes
+		vibes,
+		height,
+		radius,
+		zoom
 	} = attributes;
 
 	const firstCity = cities[0]
 	console.log('TEST DEBUG: got attributes ', attributes, firstCity);
 
-	return <Embed {...props}
-		city={firstCity}
-		cities={cities}
-		categories={categories}
-		tags={tags}
-		vibes={vibes}
-		/>
+	return (
+		<Embed {...props}
+			city={firstCity}
+			cities={cities}
+			categories={categories}
+			tags={tags}
+			vibes={vibes}
+			height={height}
+			radius={radius}
+			zoom={zoom}
+			/>
+	)
 }
 
 // Destructure the json file to get the name and settings for the block
@@ -149,6 +155,18 @@ registerBlockType(name, {
 		"cities": {
 			"type": "array",
 			"default": example?.attributes?.cities
+		},
+		"height": {
+			"type": "number",
+			"default": 800
+		},
+		"radius": {
+			"type": "number",
+			"default": 60
+		},
+		"zoom": {
+			"type": "number",
+			"default": 14
 		},
 		"tags": {
 			"type": "array",

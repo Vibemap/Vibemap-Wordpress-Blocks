@@ -1,12 +1,15 @@
 import React from 'react'
 
 const Embed = ({
-    height = 500,
+    height = 800,
+    radius = 60,
+    zoom = 14,
     domain = `https://vibemap.com`,
     path = `map`,
     // Emeded map options
     city = `peoria`,
     categories = [],
+    tags = [],
     vibes = [],
     ...props
 }) => {
@@ -23,12 +26,15 @@ const Embed = ({
         placeLayout: 'both',
         activities: categories, // TODO: rename to categories
         cities: city,
+        tags: tags,
         vibes: vibes,
+        radius: radius,
+        zoom: zoom
     });
 
     const src = `${domain}/${path}/?${searchParams}`
 
-    console.log('DEBUG: Embed src ', src, ' in Embed');
+    console.log('DEBUG: Embed src ', src, ' in Embed', zoom);
 
     const iframe = (
         `<iframe
