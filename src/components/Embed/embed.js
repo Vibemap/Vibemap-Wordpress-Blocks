@@ -8,6 +8,7 @@ const Embed = ({
     path = `map`,
     // Emeded map options
     city = `peoria`,
+    theme = 'peoria',
     categories = [],
     tags = [],
     vibes = [],
@@ -29,6 +30,10 @@ const Embed = ({
         tags: tags,
         vibes: vibes,
         radius: radius,
+        showCats: 0,
+        showTags: 1,
+        showVibes: 0,
+        theme: theme,
         zoom: zoom
     });
 
