@@ -19,8 +19,7 @@ import useFilterState from '../../components/Filters/useFilterState.js';
 import './editor.scss';
 import './style.css';
 
-const previewHeight = 420;
-const outputHeight = 2000;
+let outputHeight = 2000;
 
 // Editable UI and block attributes
 const Edit = (props) => {
@@ -28,6 +27,9 @@ const Edit = (props) => {
 	const { attributes } = props;
 	const { cities, categories, height = outputHeight, tags, vibes, zoom } = attributes;
 	console.log('DEBUG: test WP got attributes ', attributes);
+
+	const previewHeight = 420;
+	outputHeight = height ? height : 2000;
 
 	// TODO: make this reuable
 	const tag_options = useSelect((select) => {
@@ -118,10 +120,14 @@ const Save = (props) => {
 	const {
 		cities,
 		categories,
+		height,
 		tags,
 		vibes
 	} = attributes;
 	console.log('DEBUG: test got attributes ', attributes, ' in save');
+
+	outputHeight = height ? height : 2000;
+	console.log('DEBUG: outputHeight ', outputHeight, outputHeight);
 
 	return (
 		<Embed {...props}
@@ -156,6 +162,10 @@ registerBlockType(name, {
 		"cities": {
 			"type": "array",
 			"default": example?.attributes?.cities
+		},
+		"height": {
+			"type": "number",
+			"default": example?.attributes?.height
 		},
 		"tags": {
 			"type": "array",

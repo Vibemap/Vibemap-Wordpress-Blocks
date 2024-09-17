@@ -19,11 +19,12 @@
         "peoria"
       ],
       "categories": [],
+      "tags": [],
       "vibes": [],
       "align": "center",
       "class": "vibemap-embed iframe",
       "frameborder": "0",
-      "height": 500,
+      "height": 2000,
       "width": "100%",
       "scrolling": "yes"
     }
